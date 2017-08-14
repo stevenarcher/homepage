@@ -11,6 +11,8 @@
     "styled-components": "^2.1.1"
   },
   "scripts": {
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook",
     "format": "prettier --print-width 120 --use-tabs --single-quote --trailing-comma es5 --write 'src/**/*.js'",
     "start": "react-scripts start",
     "build": "react-scripts build",
