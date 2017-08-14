@@ -8,9 +8,23 @@
     "react-scripts": "1.0.11"
   },
   "scripts": {
+    "format": "prettier --print-width 120 --use-tabs --single-quote --trailing-comma es5 --write 'src/**/*.js'",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
+  },
+  "devDependencies": {
+    "lint-staged": "^4.0.2",
+    "prettier": "^1.5.3",
+  },
+  "lint-staged": {
+    "*.js": [
+      "prettier --print-width 120 --use-tabs --single-quote --trailing-comma es5 --write",
+      "git add"
+    ]
+  },
+  "eslintConfig": {
+    "extends": "react-app"
   }
 }
