@@ -5,7 +5,10 @@
   "dependencies": {
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
-    "react-scripts": "1.0.11"
+    "react-router-dom": "^4.1.1",
+    "react-scripts": "1.0.10",
+    "sanitize.css": "^5.0.0",
+    "styled-components": "^2.1.1",
   },
   "scripts": {
     "format": "prettier --print-width 120 --use-tabs --single-quote --trailing-comma es5 --write 'src/**/*.js'",
@@ -15,7 +18,19 @@
     "eject": "react-scripts eject"
   },
   "devDependencies": {
+    "@storybook/addon-actions": "^3.1.6",
+    "@storybook/addon-centered": "^3.1.2",
+    "@storybook/addon-info": "^3.1.6",
+    "@storybook/addon-knobs": "^3.1.6",
+    "@storybook/addon-links": "^3.1.6",
+    "@storybook/addon-options": "^3.1.6",
+    "@storybook/addons": "^3.1.6",
+    "@storybook/react": "^3.1.7",
+    "@storybook/react-fuzzy": "^0.4.0",
+    "@storybook/ui": "^3.1.6",
+    "concurrently": "^3.5.0",
     "lint-staged": "^4.0.2",
+    "polished": "^1.3.0",
     "prettier": "^1.5.3",
   },
   "lint-staged": {
