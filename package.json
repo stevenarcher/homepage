@@ -8,7 +8,7 @@
     "react-router-dom": "^4.1.1",
     "react-scripts": "1.0.10",
     "sanitize.css": "^5.0.0",
-    "styled-components": "^2.1.1",
+    "styled-components": "^2.1.1"
   },
   "scripts": {
     "format": "prettier --print-width 120 --use-tabs --single-quote --trailing-comma es5 --write 'src/**/*.js'",
@@ -31,7 +31,7 @@
     "concurrently": "^3.5.0",
     "lint-staged": "^4.0.2",
     "polished": "^1.3.0",
-    "prettier": "^1.5.3",
+    "prettier": "^1.5.3"
   },
   "lint-staged": {
     "*.js": [
