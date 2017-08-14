@@ -33,8 +33,8 @@ function loadStories() {
 
 // update default options
 setOptions({
-	name: 'Market-Axess',
-	url: 'https://github.com/fathomlondon/market-axess-prototype',
+	name: 'StevenArcher',
+	url: 'https://github.com/stevenarcher/homepage',
 	goFullScreen: false,
 	showLeftPanel: true,
 	showDownPanel: true,

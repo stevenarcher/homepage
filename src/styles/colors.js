@@ -37,6 +37,9 @@ export const colors = {
 	base: {
 		text: cinnabar,
 		background: grayChateau,
+	},
+	shadows: {
+		main: black,
 	}
 };
 

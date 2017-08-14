@@ -69,7 +69,7 @@ const getColorHex = color => {
 const renderPalettes = (item, index) => {
 	if (Array.isArray(item)) {
 		return (
-			<StoryGroup className="group">
+			<StoryGroup key={index} className="group">
 				{item.map(renderPalettes)}
 			</StoryGroup>
 		);
@@ -83,7 +83,7 @@ const colorName = {};
 const renderPalette = ({ name, value }, index) => {
 	colorName[value] = name;
 	return (
-		<StoryItem key={name + index} color={value}>
+		<StoryItem key={index} color={value}>
 			<StoryItemInfo>
 				{value}
 			</StoryItemInfo>
@@ -100,7 +100,7 @@ const renderPalette = ({ name, value }, index) => {
 const renderColors = (item, index) => {
 	if (Array.isArray(item)) {
 		return (
-			<StoryGroup className="group">
+			<StoryGroup key={index} className="group">
 				{item.map(renderColors)}
 			</StoryGroup>
 		);
@@ -111,10 +111,10 @@ const renderColors = (item, index) => {
 
 const renderColor = ({ title, group, name, value }, index) =>
 	title
-		? <SubTitle>
+		? <SubTitle key={index}>
 				{title}
 			</SubTitle>
-		: <StoryItem key={name + index}>
+		: <StoryItem key={index}>
 				<StoryItemWrapper>
 					<StoryDot color={value} />
 				</StoryItemWrapper>
@@ -202,7 +202,7 @@ stories.addWithInfo('Typography', () =>
 		<StoryList>
 			<Title>Typography</Title>
 			{storyStyles.map(({ name, Component }, index) =>
-				<StoryItem key={name}>
+				<StoryItem key={index}>
 					<Component>
 						{name} <br />
 						The quick brown fox jumps over the lazy dog

@@ -1,10 +1,15 @@
 // load the default config generator.
 const genDefaultConfig = require('@storybook/react/dist/server/config/defaults/webpack.config.js');
 
-module.exports = (config, env) => {
-	const c = genDefaultConfig(config, env);
+/**
+ * @param {JSON} storybookBaseConfig
+ * @param {string} configType - 'DEVELOPMENT' or 'PRODUCTION'
+ * @return {newConfig}
+ */
+module.exports = (storybookBaseConfig, configType) => {
+	const newConfig = genDefaultConfig(storybookBaseConfig, configType);
 
-	c.resolve.modules.push('../src');
+	newConfig.resolve.modules.push('../src');
 
-	return c;
+	return newConfig;
 };
