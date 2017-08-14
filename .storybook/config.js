@@ -11,6 +11,9 @@ import '../src/global-styles';
 const Wrapper = styled.div`
 	min-height: 100vh;
 	padding: 0 20px;
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", Arial, sans-serif;
+	font-size: 11px;
+	letter-spacing: 1px;
 `;
 
 function Stage(story) {
