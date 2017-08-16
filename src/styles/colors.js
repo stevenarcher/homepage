@@ -73,8 +73,6 @@ export const colors = {
 		},
 		active: rgba(sinbad, 0.4),
 	},
-
 };
-
 
 export default colors;

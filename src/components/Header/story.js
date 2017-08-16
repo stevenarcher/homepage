@@ -13,6 +13,6 @@ export const Wrapper = styled.div`min-width: 500px;`;
 
 storiesOf('Header', module).addDecorator(withKnobs).add('Web GL mode', () =>
 	<Wrapper>
-		<Header useWebGL={true}/>
+		<Header useWebGL={true} />
 	</Wrapper>
 );

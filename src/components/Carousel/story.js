@@ -12,7 +12,7 @@ storiesOf('Carousel', module).addDecorator(withKnobs).add('example', () =>
 	<Carousel>
 		<div>
 			<h1>Steven Archer</h1>
-			<br/>
+			<br />
 			<span>
 				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras sed pretium lorem. Suspendisse sed tristique sem.
 				Morbi convallis pellentesque tortor, ultricies vehicula risus pulvinar quis. Pellentesque ultricies scelerisque

@@ -31,4 +31,3 @@ export const Title = styled.div`
 	align-self: flex-start;
 	justify-content: left;
 `;
-

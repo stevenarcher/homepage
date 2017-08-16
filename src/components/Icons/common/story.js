@@ -13,11 +13,7 @@ import ArrowIcon from './ArrowIcon';
 import { number } from '@storybook/addon-knobs';
 import { StoryItem, StoryItemName, StoryItemWrapper, StoryList, Title, ScrollWrapper } from '../../../styles/storybook';
 
-const iconComponents = [
-	{ Icon: LeftIcon },
-	{ Icon: RightIcon },
-	{ Icon: CrossIcon },
-];
+const iconComponents = [{ Icon: LeftIcon }, { Icon: RightIcon }, { Icon: CrossIcon }];
 
 const stories = storiesOf('Icons', module);
 
