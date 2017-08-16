@@ -6,6 +6,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Wrapper, Title } from './styles';
+import Renderer from '../../threejs/Renderer';
 
 class Header extends Component {
 	render() {
@@ -14,6 +15,7 @@ class Header extends Component {
 				<Title>
 					<span>Steven Archer</span>
 				</Title>
+				<Renderer width={200} height={200} />
 			</Wrapper>
 		);
 	}

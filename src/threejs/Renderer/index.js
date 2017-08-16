@@ -6,8 +6,9 @@
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Wrapper, Title } from './styles';
 import * as THREE from 'three';
+import ReactDOM from 'react-dom';
+import styled from 'styled-components';
 
 class Renderer extends Component {
 	constructor(props) {
@@ -28,11 +29,13 @@ class Renderer extends Component {
 		this.destroy();
 	}
 
-	create() {
+	create = () => {
 		const { width, height } = this.props;
 
+		const canvas = ReactDOM.findDOMNode(this);
+
 		// Renderer
-		this.renderer = new THREE.WebGLRenderer({ alpha: false });
+		this.renderer = new THREE.WebGLRenderer({ alpha: false, canvas });
 		this.renderer.setClearColor(0xfcfcf2);
 		this.renderer.shadowMap.enabled = true;
 		this.renderer.setPixelRatio(window.devicePixelRatio);
@@ -47,16 +50,16 @@ class Renderer extends Component {
 		this.camera.rotation.set(0, 0, 0);
 
 		this.clock = new THREE.Clock();
-	}
+	};
 
-	destroy() {
+	destroy = () => {
 		// TODO: destroy me plz
-	}
+	};
 
 	update() {}
 
 	render() {
-		return this.renderer.domElement;
+		return <canvas />;
 	}
 }
 
@@ -64,3 +67,5 @@ Renderer.propTypes = {
 	width: PropTypes.number.isRequired,
 	height: PropTypes.number.isRequired,
 };
+
+export default Renderer;
