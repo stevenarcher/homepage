@@ -40,7 +40,40 @@ export const colors = {
 	},
 	shadows: {
 		main: black,
-	}
+	},
+
+	buttonPrimary: {
+		enabled: {
+			background: sinbad,
+			text: black,
+		},
+		disabled: {
+			background: rgba(sinbad, 0.3),
+			text: rgba(grayChateau, 0.4),
+		},
+		hover: {
+			background: cinnabar,
+			text: white,
+		},
+		active: rgba(white, 0.2),
+	},
+
+	buttonIcon: {
+		enabled: {
+			background: rgba(white, 0),
+			text: cinnabar,
+		},
+		disabled: {
+			background: rgba(white, 0),
+			text: rgba(cinnabar, 0.2),
+		},
+		hover: {
+			background: rgba(white, 0),
+			text: sinbad,
+		},
+		active: rgba(sinbad, 0.4),
+	},
+
 };
 
 
