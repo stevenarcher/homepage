@@ -12,9 +12,6 @@ injectGlobal`
 		height: 100%;
 		width: 100%;
 		overflow-y: hidden;
-	}
-	
-	body {
 		-ms-overflow-style: scrollbar;
 		-webkit-app-region:drag;
 		-webkit-user-select: none;

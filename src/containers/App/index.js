@@ -17,7 +17,7 @@ export class App extends PureComponent {
 	render() {
 		return (
 			<div>
-				Steven Archer - homepage
+				<h1>Steven Archer</h1>
 			</div>
 		);
 	}
