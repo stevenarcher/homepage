@@ -1,5 +1,5 @@
 /**
- * Styles story
+ * Styles Story
  * ------------
  */
 

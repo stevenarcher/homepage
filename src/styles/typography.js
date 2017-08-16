@@ -76,3 +76,5 @@ export const header2 = style({ size: 18, weight: bold, lineHeight: '20px' });
 
 export const body = style({ size: 15, weight: regular, lineHeight: '22px' });
 
+export const button = style({ size: 14, weight: bold });
+export const buttonLight = style({ size: 14, weight: regular });
