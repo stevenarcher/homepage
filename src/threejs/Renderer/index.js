@@ -8,8 +8,14 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import * as THREE from 'three';
 import ReactDOM from 'react-dom';
-import styled from 'styled-components';
+import { Canvas } from './styles';
+import UpdateLoop from '../../utils/UpdateLoop';
 
+/**
+ * Renderer
+ * @extends {Component}
+ * @implements {IUpdatable}
+ */
 class Renderer extends Component {
 	constructor(props) {
 		super(props);
@@ -29,6 +35,9 @@ class Renderer extends Component {
 		this.destroy();
 	}
 
+	/**
+	 * Create
+	 */
 	create = () => {
 		const { width, height } = this.props;
 
@@ -36,7 +45,7 @@ class Renderer extends Component {
 
 		// Renderer
 		this.renderer = new THREE.WebGLRenderer({ alpha: false, canvas });
-		this.renderer.setClearColor(0xfcfcf2);
+		this.renderer.setClearColor(this.props.backgroundColor);
 		this.renderer.shadowMap.enabled = true;
 		this.renderer.setPixelRatio(window.devicePixelRatio);
 		this.renderer.setSize(width, height);
@@ -44,28 +53,52 @@ class Renderer extends Component {
 		// Scene
 		this.scene = new THREE.Scene();
 
+		this.props.children.map(child => {
+			this.scene.add(child);
+		});
+
 		// Camera
 		this.camera = new THREE.PerspectiveCamera(42, width / height, 0.25, 10000);
 		this.camera.position.set(0, 0.016, 6.2);
 		this.camera.rotation.set(0, 0, 0);
 
-		this.clock = new THREE.Clock();
+		UpdateLoop.add(this);
+		UpdateLoop.start();
 	};
 
+	/**
+	 * Destroy
+	 */
 	destroy = () => {
-		// TODO: destroy me plz
+		UpdateLoop.remove(this);
+
+		//this.renderer.destroy();
 	};
 
-	update() {}
+	/**
+	 * Update
+	 * @param {number} delta - the time since the last update
+	 */
+	update = delta => {
+		this.renderer.render(this.scene, this.camera);
+	};
 
+	/**
+	 * Render
+	 */
 	render() {
-		return <canvas />;
+		return <Canvas />;
 	}
 }
 
 Renderer.propTypes = {
 	width: PropTypes.number.isRequired,
 	height: PropTypes.number.isRequired,
+	backgroundColor: PropTypes.number,
+};
+
+Renderer.defaultProps = {
+	backgroundColor: 0xfcfcf2,
 };
 
 export default Renderer;
