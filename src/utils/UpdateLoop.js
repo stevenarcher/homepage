@@ -23,7 +23,7 @@ class UpdateLoop {
 	 * @param {IUpdatable} updateToAdd - object that contains a update function
 	 */
 	add = updateToAdd => {
-		this._updates.push(update);
+		this._updates.push(updateToAdd);
 	};
 
 	/**
@@ -43,7 +43,7 @@ class UpdateLoop {
 		});
 
 		if (!inUpdateLoop) {
-			console.error('ERROR - Update [' + update + '] not found ' + this);
+			console.error('ERROR - Update [' + updateToRemove + '] not found ' + this);
 		}
 
 		// Error Checking - is the Update already pending removal?
@@ -83,6 +83,7 @@ class UpdateLoop {
 		if (!this._isUpdating) {
 			this._isUpdating = true;
 			this._lastTimeUpdated = this._now();
+			this._loop();
 		} else {
 			console.warn('cannot start - is already updating! ' + this);
 		}
