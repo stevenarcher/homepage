@@ -4,7 +4,6 @@
  * @enum
  */
 const DeviceOS = {
-
 	ANDROID: `Android`,
 	IOS: `iOS`,
 	CHROME_OS: `Chrome OS`,
@@ -20,7 +19,6 @@ const DeviceOS = {
 	MAC_OSX: `Mac OSX`,
 	WINDOWS: `Windows`,
 	WINDOWS_MOBILE: `Windows Mobile`,
-
 };
 
 export default DeviceOS;

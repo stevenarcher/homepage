@@ -4,14 +4,12 @@
  * @enum
  */
 const BrowserName = {
-
-	FIREFOX:'Firefox',
-	INTERNET_EXPLORER:'Internet Explorer',
-	CHROME:'Chrome',
-	SAFARI:'Safari',
-	OPERA:'Opera',
-	OTHER:'Other',
-
+	FIREFOX: 'Firefox',
+	INTERNET_EXPLORER: 'Internet Explorer',
+	CHROME: 'Chrome',
+	SAFARI: 'Safari',
+	OPERA: 'Opera',
+	OTHER: 'Other',
 };
 
 export default BrowserName;

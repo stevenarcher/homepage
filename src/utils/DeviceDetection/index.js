@@ -3,24 +3,22 @@ import DeviceOS from './DeviceOS';
 import Devices from './Devices';
 import BrowserName from './BrowserName';
 
-
 /**
  * Device Detection
  * @property {{deviceType:string, browserName:string, browserVersion:number, osVersion:string, osName:string, aspectRatio:number}}
  */
 class DeviceDetection {
-
 	/**
 	 * @constructor
 	 */
 	constructor() {
 		this.device = {
-			deviceType:'',
-			browserName:'',
-			browserVersion:0,
-			osVersion:'',
-			osName:'',
-			aspectRatio:-1,
+			deviceType: '',
+			browserName: '',
+			browserVersion: 0,
+			osVersion: '',
+			osName: '',
+			aspectRatio: -1,
 		};
 		this._detect();
 	}
@@ -63,7 +61,7 @@ class DeviceDetection {
 	 * @returns {*}
 	 * @private
 	 */
-	_convertPropsToRegExp = (object) => {
+	_convertPropsToRegExp = object => {
 		for (let key in object) {
 			if (Object.prototype.hasOwnProperty.call(object, key)) {
 				object[key] = new RegExp(object[key], 'i');
@@ -84,7 +82,6 @@ class DeviceDetection {
 
 		const isMobile = this._findMatch(mobiles, nAgent) !== null;
 		const isTablet = this._findMatch(tablets, nAgent) !== null;
-
 
 		let deviceType = isMobile ? DeviceType.MOBILE : isTablet ? DeviceType.TABLET : DeviceType.DESKTOP;
 
@@ -138,7 +135,7 @@ class DeviceDetection {
 			{ s: DeviceOS.UNIX, r: /UNIX/ },
 			{ s: DeviceOS.BeOS, r: /BeOS/ },
 			{ s: DeviceOS.OS2, r: /OS\/2/ },
-			{ s: DeviceOS.SEARCH_BOT, r: /(nuhk|Googlebot|Yammybot|Openbot|Slurp|MSNBot|Ask Jeeves\/Teoma|ia_archiver)/ }
+			{ s: DeviceOS.SEARCH_BOT, r: /(nuhk|Googlebot|Yammybot|Openbot|Slurp|MSNBot|Ask Jeeves\/Teoma|ia_archiver)/ },
 		];
 		for (let id in clientStrings) {
 			let cs = clientStrings[id];
@@ -190,13 +187,11 @@ class DeviceDetection {
 			if ((verOffset = userAgent.indexOf('Version')) !== -1) fullVersion = userAgent.substring(verOffset + 8);
 		}
 
-
-
-		if(this._detectIE()){
+		if (this._detectIE()) {
 			browserName = BrowserName.INTERNET_EXPLORER;
-			fullVersion = ''+this._detectIE();
-		}
-		/*
+			fullVersion = '' + this._detectIE();
+		} else if ((verOffset = userAgent.indexOf('Chrome')) !== -1) {
+			/*
 		 // In MSIE, the true version is after 'MSIE' in userAgent
 		 else if ((verOffset = userAgent.indexOf('MSIE')) !== -1) {
 		 browserName = BrowserName.INTERNET_EXPLORER;
@@ -204,27 +199,20 @@ class DeviceDetection {
 		 }
 		 */
 
-		// In Chrome, the true version is after 'Chrome'
-		else if ((verOffset = userAgent.indexOf('Chrome')) !== -1) {
+			// In Chrome, the true version is after 'Chrome'
 			browserName = BrowserName.CHROME;
 			fullVersion = userAgent.substring(verOffset + 7);
-		}
-
-		// In Safari, the true version is after 'Safari' or after 'Version'
-		else if ((verOffset = userAgent.indexOf('Safari')) !== -1) {
+		} else if ((verOffset = userAgent.indexOf('Safari')) !== -1) {
+			// In Safari, the true version is after 'Safari' or after 'Version'
 			browserName = BrowserName.SAFARI;
 			fullVersion = userAgent.substring(verOffset + 7);
 			if ((verOffset = userAgent.indexOf('Version')) !== -1) fullVersion = userAgent.substring(verOffset + 8);
-		}
-
-		// In Firefox, the true version is after 'Firefox'
-		else if ((verOffset = userAgent.indexOf('Firefox')) !== -1) {
+		} else if ((verOffset = userAgent.indexOf('Firefox')) !== -1) {
+			// In Firefox, the true version is after 'Firefox'
 			browserName = BrowserName.FIREFOX;
 			fullVersion = userAgent.substring(verOffset + 8);
-		}
-
-		// In most other browsers, 'name/version' is at the end of userAgent
-		else if ((nameOffset = userAgent.lastIndexOf(' ') + 1) < (verOffset = userAgent.lastIndexOf('/'))) {
+		} else if ((nameOffset = userAgent.lastIndexOf(' ') + 1) < (verOffset = userAgent.lastIndexOf('/'))) {
+			// In most other browsers, 'name/version' is at the end of userAgent
 			browserName = userAgent.substring(nameOffset, verOffset);
 			fullVersion = userAgent.substring(verOffset + 1);
 			if (browserName.toLowerCase() === browserName.toUpperCase()) {
@@ -292,7 +280,7 @@ class DeviceDetection {
 			return parseInt(ua.substring(edge + 5, ua.indexOf('.', edge)), 10);
 		}
 		return null;
-	}
+	};
 }
 
 /**
