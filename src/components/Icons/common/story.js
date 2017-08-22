@@ -10,7 +10,7 @@ import LeftIcon from '../LeftIcon';
 import RightIcon from '../RightIcon';
 import CrossIcon from '../CrossIcon';
 import ArrowIcon from './ArrowIcon';
-import { Facebook, Flickr, GooglePlus, LinkedIn, Twitter, Pintrest, YouTube } from '../social';
+import { BitBucket, Facebook, Flickr, GitHub, GooglePlus, LinkedIn, Twitter, Pintrest, YouTube } from '../social';
 import { number } from '@storybook/addon-knobs';
 import { StoryItem, StoryItemName, StoryItemWrapper, StoryList, Title, ScrollWrapper } from '../../../styles/storybook';
 
@@ -18,8 +18,10 @@ const iconComponents = [
 	{ Icon: LeftIcon },
 	{ Icon: RightIcon },
 	{ Icon: CrossIcon },
+	{ Icon: BitBucket },
 	{ Icon: Facebook },
 	{ Icon: Flickr },
+	{ Icon: GitHub},
 	{ Icon: GooglePlus },
 	{ Icon: LinkedIn },
 	{ Icon: Twitter },

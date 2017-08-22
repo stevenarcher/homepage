@@ -8,7 +8,7 @@ import PropTypes from 'prop-types';
 
 function GooglePlus(props) {
 	return (
-		<svg width={`${props.width}${props.percent ? '%' : 'px'}`} viewBox="0 0 33 32">
+		<svg width={`${props.width}${props.percent ? '%' : 'px'}`} viewBox="0 0 32 32">
 			<g stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
 				<path
 					className="svgFill"
@@ -37,7 +37,7 @@ GooglePlus.propTypes = {
 };
 
 GooglePlus.defaultProps = {
-	width: 33,
+	width: 32,
 	percent: false,
 };
 

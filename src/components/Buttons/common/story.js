@@ -10,6 +10,7 @@ import Button, { ButtonStyle } from '../Button';
 import LeftButton from '../LeftButton';
 import RightButton from '../RightButton';
 import CloseButton from '../CloseButton';
+import { FacebookButton, FlickrButton, GitHubButton, GooglePlusButton, LinkedInButton, TwitterButton, PintrestButton, YouTubeButton } from '../social';
 import { text, boolean } from '@storybook/addon-knobs';
 import { StoryItem, StoryItemName, StoryItemWrapper, StoryList, Title, ScrollWrapper } from '../../../styles/storybook';
 
@@ -18,6 +19,14 @@ const buttonComponents = [
 	{ Component: LeftButton, name: 'LeftButton' },
 	{ Component: RightButton, name: 'RightButton' },
 	{ Component: CloseButton, name: 'CloseButton' },
+	{ Component: FacebookButton, name: 'FacebookButton' },
+	{ Component: FlickrButton, name: 'FlickrButton' },
+	{ Component: GitHubButton, name: 'GitHubButton' },
+	{ Component: GooglePlusButton, name: 'GooglePlusButton' },
+	{ Component: LinkedInButton, name: 'LinkedInButton' },
+	{ Component: TwitterButton, name: 'TwitterButton' },
+	{ Component: PintrestButton, name: 'PintrestButton' },
+	{ Component: YouTubeButton, name: 'YouTubeButton' },
 ];
 
 const stories = storiesOf('Buttons', module);
