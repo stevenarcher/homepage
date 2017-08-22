@@ -19,6 +19,12 @@ const sandDune = '#837569';
 const soyaBean = '#61544B';
 const sage = '#9EA086';
 
+const conch = '#d8e2dc';
+const kerry = '#ffe5d9';
+const pastelPink = '#ffcad4';
+const wewak = '#f4acb7';
+const mountbattenPink = '#9d8189';
+
 export const palette = {
 	white,
 	mystic,
@@ -35,8 +41,8 @@ export const palette = {
 // Main Color Theme -----------------------------------------------------------
 export const colors = {
 	base: {
-		text: cinnabar,
-		background: grayChateau,
+		text: sinbad,
+		background: conch,
 	},
 	shadows: {
 		main: black,
@@ -44,15 +50,15 @@ export const colors = {
 
 	buttonPrimary: {
 		enabled: {
-			background: sinbad,
-			text: black,
+			background: conch,
+			text: soyaBean,
 		},
 		disabled: {
-			background: rgba(sinbad, 0.3),
+			background: rgba(conch, 0.3),
 			text: rgba(grayChateau, 0.4),
 		},
 		hover: {
-			background: cinnabar,
+			background: sinbad,
 			text: white,
 		},
 		active: rgba(white, 0.2),
@@ -72,6 +78,22 @@ export const colors = {
 			text: sinbad,
 		},
 		active: rgba(sinbad, 0.4),
+	},
+
+	buttonSocial: {
+		enabled: {
+			background: kerry,
+			text: mountbattenPink,
+		},
+		disabled: {
+			background: rgba(kerry, 0.1),
+			text: rgba(mountbattenPink, 0.2),
+		},
+		hover: {
+			background: rgba(white, 0.5),
+			text: cinnabar,
+		},
+		active: white,
 	},
 };
 
