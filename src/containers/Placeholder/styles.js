@@ -5,6 +5,7 @@
 
 import styled from 'styled-components';
 import { colors, typography, shadows } from '../../styles';
+import { rgba } from 'polished';
 
 export const Wrapper = styled.div`
 	${typography.style1};
@@ -15,10 +16,11 @@ export const Wrapper = styled.div`
 
 export const Box = styled.div`
 	${shadows.outerLarge}
-	padding: 20px;
+	padding: 28px 40px;
 	align-items: center;
   justify-content: center;
   text-align: center;
+  background-color: #ffe5d9;
 `;
 
 export const Title = styled.h1`
@@ -37,11 +39,13 @@ export const SubTitle = styled.div`
 export const Header = styled.header`
 	margin: 0px;
 	position: absolute;
-	top: 4px;
+	top: 0px;
+	padding: 4px 0px;
 	width: 100%;
 	text-align: center;
 	${typography.body}
 	color: ${colors.base.text};
+	background-color: #ffe5d9;
 `;
 
 export const Footer = styled.footer`

@@ -41,8 +41,8 @@ export const palette = {
 // Main Color Theme -----------------------------------------------------------
 export const colors = {
 	base: {
-		header: white,
-		text: mountbattenPink,
+		header: rgba(mountbattenPink,1),
+		text: rgba(mountbattenPink,0.8),
 		background: conch,
 	},
 	shadows: {
@@ -83,11 +83,11 @@ export const colors = {
 
 	buttonSocial: {
 		enabled: {
-			background: kerry,
+			background: rgba(white, 0.2),
 			text: mountbattenPink,
 		},
 		disabled: {
-			background: rgba(kerry, 0.1),
+			background: rgba(pastelPink, 0.1),
 			text: rgba(mountbattenPink, 0.2),
 		},
 		hover: {
