@@ -1,7 +1,7 @@
 import React from 'react';
 import { Route } from 'react-router-dom';
-import App from '../containers/App';
+import Placeholder from '../containers/Placeholder';
 
 export default function Routes() {
-	return <Route path="*" component={App} />;
+	return <Route path="*" component={Placeholder} />;
 }

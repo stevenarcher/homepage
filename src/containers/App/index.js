@@ -4,20 +4,17 @@
  */
 
 import React, { PureComponent } from 'react';
+import Header from '../../components/Header/index';
 
 export class App extends PureComponent {
 	constructor() {
 		super();
-		this.state = {
-			asideOpen: true,
-			selectedID: '',
-		};
 	}
 
 	render() {
 		return (
 			<div>
-				<h1>Steven Archer</h1>
+				<Header />
 			</div>
 		);
 	}

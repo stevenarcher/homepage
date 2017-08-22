@@ -5,11 +5,13 @@ import * as transitions from './transitions';
  * similar to material design
  * @param {string} color
  * @param {string} state
+ * @param {string} amount
+ * @param {string} pseudo
  */
-export const ripple = (color, state = 'active', amount = '120%') => `
+export const ripple = (color, state = 'active', amount = '120%', pseudo = 'before') => `
 
 	overflow: hidden;
-	&:before {
+	&:${pseudo} {
 			content: "";
 			
 			box-sizing: border-box;
@@ -27,7 +29,7 @@ export const ripple = (color, state = 'active', amount = '120%') => `
 			transform: translate(-50%, -50%);		
 		}
 		&:${state} {
-			&:before {
+			&:${pseudo} {
 				width: ${amount};
 				padding-top: ${amount};
 				${transitions.fastEaseOut('width, padding-top')}

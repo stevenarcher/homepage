@@ -1,4 +1,7 @@
 import { injectGlobal } from 'styled-components';
+import { colors, typography } from './styles';
+
+const color = colors.base;
 
 injectGlobal`
 	*,
@@ -23,7 +26,10 @@ injectGlobal`
 		textarea {
 			-webkit-app-region: no-drag;
 		}
-		height: 100%;
+		
+		background-color: ${color.background};
+		color: ${color.text};
+		${typography.body}		
 	}
 	
 	p {
@@ -41,5 +47,23 @@ injectGlobal`
 	[data-reactroot] {
 		display: flex;
 		flex-direction: column;
+	}
+	
+	@font-face {
+    font-family: 'rubikregular';
+    src: url('fonts/rubik-regular-webfont.woff2') format('woff2'),
+         url('fonts/rubik-regular-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+	}
+	
+	@font-face {
+			font-family: 'cabinregular';
+			src: url('fonts/cabin-regular-webfont.woff2') format('woff2'),
+					 url('fonts/cabin-regular-webfont.woff') format('woff');
+			font-weight: normal;
+			font-style: normal;
+	
 	}
 `;

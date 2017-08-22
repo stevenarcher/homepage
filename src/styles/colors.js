@@ -41,16 +41,17 @@ export const palette = {
 // Main Color Theme -----------------------------------------------------------
 export const colors = {
 	base: {
-		text: sinbad,
+		header: white,
+		text: mountbattenPink,
 		background: conch,
 	},
 	shadows: {
-		main: black,
+		main: soyaBean,
 	},
 
 	buttonPrimary: {
 		enabled: {
-			background: conch,
+			background: kerry,
 			text: soyaBean,
 		},
 		disabled: {
@@ -91,7 +92,7 @@ export const colors = {
 		},
 		hover: {
 			background: rgba(white, 0.5),
-			text: cinnabar,
+			text: sinbad,
 		},
 		active: white,
 	},

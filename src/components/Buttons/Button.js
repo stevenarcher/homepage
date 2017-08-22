@@ -69,6 +69,7 @@ const Button = props => {
 			otherStyles={otherStyles}
 			typographyStyle={typographyStyle}
 			width={width}
+			onClick={props.onClick}
 		>
 			{props.children}
 		</Wrapper>

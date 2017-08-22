@@ -5,14 +5,14 @@
  */
 import colors from './colors';
 import * as responsive from './responsive';
-/* eslint-disable no-unused-vars, import/first */
 
 // Defaults -------------------------------------------------------------------
-export const defaults = {
-	font: `font-family: 'Lato', 'Helvetica Neue', Helvetica, Arial, sans-serif;`,
-	fontSize: 'font-size: 12px',
-	lineSpacing: 'line-height: 1.25',
+
+const fonts = {
+	main: `font-family: 'rubikregular', 'Helvetica Neue', Helvetica, Arial, sans-serif;`,
+	title: `font-family: 'cabinregular', 'Helvetica Neue', Helvetica, Arial, sans-serif;`,
 };
+
 
 // Weights --------------------------------------------------------------------
 const thin = 'font-weight: 200;';
@@ -44,7 +44,7 @@ const responsiveStyle = (sizes, weight, color) => {
 	const size = sizes.base;
 	if (!size) throw new Error('Responsive Style - you need to provide a base value');
 	return `
-    ${defaults.font}
+    ${fonts.main}
     ${fontSize(size)}
     ${weight}
     color: ${color === undefined ? colors.text.main : color};
@@ -59,9 +59,10 @@ const responsiveStyle = (sizes, weight, color) => {
  * @param {string} fontStyle
  * @param {string} lineHeight
  * @param {string} letterSpacing
+ * @param {string} font
  */
-const style = ({ size, weight, fontStyle = 'normal', lineHeight = 'normal', letterSpacing = '0px' }) => `
-  ${defaults.font}
+const style = ({ size, weight, fontStyle = 'normal', lineHeight = 'normal', letterSpacing = '0px', font = fonts.main }) => `
+  ${font}
   ${fontSize(size)}
   ${weight}
   font-style: ${fontStyle};
@@ -71,10 +72,10 @@ const style = ({ size, weight, fontStyle = 'normal', lineHeight = 'normal', lett
 
 export const style1 = style({ size: 13, weight: bold, lineHeight: '15px' });
 
-export const header1 = style({ size: 14, weight: bold, lineHeight: '15px' });
-export const header2 = style({ size: 18, weight: bold, lineHeight: '20px' });
+export const header1 = style({ size: 42, weight: regular, lineHeight:'40px', letterSpacing: '1px', font: fonts.title });
+export const header2 = style({ size: 28, weight: regular, lineHeight: '26px', font: fonts.title });
 
 export const body = style({ size: 15, weight: regular, lineHeight: '22px' });
 
-export const button = style({ size: 14, weight: bold });
+export const button = style({ size: 14, weight: regular });
 export const buttonLight = style({ size: 14, weight: regular });
