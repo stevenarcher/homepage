@@ -1,6 +1,6 @@
 /**
- * Carousel story
- * --------------
+ * Device Detection story
+ * ----------------------
  */
 
 import React from 'react';
