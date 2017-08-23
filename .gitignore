@@ -19,7 +19,7 @@
 
 # production
 /build
-
+/storybook-static
 
 # Other ---------------------------------------------------
 
