@@ -36,3 +36,19 @@ export const ripple = (color, state = 'active', amount = '120%', pseudo = 'befor
 			}
 		}
 `;
+
+/**
+ * Underline Highlight
+ * an underline that grows on hover to fill the background
+ * @param backgroundImage
+ */
+export const underline = (backgroundImage = 'linear-gradient(120deg, #84fab0 0%, #8fd3f4 100%)') =>`
+	background-image: ${backgroundImage};
+	background-repeat: no-repeat;
+	background-size: 100% 0.2em;
+	background-position: 0 88%;
+	transition: background-size 0.25s ease-in;
+	&:hover {
+		background-size: 100% 88%;
+	}
+`;
