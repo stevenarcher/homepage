@@ -34,7 +34,6 @@ const Wrapper = styled.button`
 			display: flex;
 			justify-content:center;
 			align-content:center;
-			flex-direction:column;
 			cursor: ${enabled ? 'pointer' : 'not-allowed'};
 			${typographyStyle}
 			${enabled ? shadows.outerBottom : shadows.outerNone}
