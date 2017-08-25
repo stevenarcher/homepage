@@ -1,3 +1,8 @@
+/**
+ * Update Loop
+ * -----------
+ * used to manage and optimise functions running in an update/game loop
+ */
 class UpdateLoop {
 	/**
 	 * Update Loop
