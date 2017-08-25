@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter, Route } from 'react-router-dom';
 import Routes from './Routes';
 
 const Root = props => {
@@ -9,9 +9,9 @@ const Root = props => {
 
 	/* if (isLoading) { return <div> Loading ... </div>; } */
 	return (
-		<Router>
+		<BrowserRouter>
 			<Route path="*" component={Routes} />
-		</Router>
+		</BrowserRouter>
 	);
 };
 
