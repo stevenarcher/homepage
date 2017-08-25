@@ -3,9 +3,19 @@
  * -------------
  */
 
-import styled from 'styled-components';
+import styled, { injectGlobal } from 'styled-components';
 import { colors, typography, shadows } from '../../styles';
+import TypeIn from '../../styles/animation/TypeIn';
 import { rgba } from 'polished';
+
+const color = colors.base;
+
+injectGlobal`
+	body {
+		background: ${color.background};
+		background: linear-gradient(${color.background}, ${color.backgroundDark});
+	}
+`;
 
 export const Wrapper = styled.div`
 	${typography.style1};
@@ -15,25 +25,34 @@ export const Wrapper = styled.div`
 `;
 
 export const Box = styled.div`
+	padding: 28px 40px;
+	align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: ${colors.card.text};
+`;
+
+/*
+export const Box = styled.div`
 	${shadows.outerLarge}
 	padding: 28px 40px;
 	align-items: center;
   justify-content: center;
   text-align: center;
-  background-color: #ffe5d9;
+  background-color: ${colors.card.background};
+  color: ${colors.card.text};
 `;
-
+*/
 export const Title = styled.h1`
 	margin: 0px;
 	${typography.header1};
-	color: ${colors.base.header};
 `;
 
 export const SubTitle = styled.div`
 	margin: 0px;
 	padding-bottom: 30px;
 	${typography.header2}
-	color: ${colors.base.text};
+	color: ${rgba(colors.card.text,0.1)}
 `;
 
 export const Header = styled.header`
@@ -45,12 +64,11 @@ export const Header = styled.header`
 	text-align: center;
 	${typography.body}
 	color: ${colors.base.text};
-	background-color: #ffe5d9;
+	background-color: ${colors.card.backgroundLight};
 `;
 
 export const Footer = styled.footer`
 	margin: 0px;
-	color: ${colors.base.text};
 	button {
 		position: absolute;
 		right: 0;

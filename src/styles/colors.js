@@ -13,86 +13,87 @@ const iron = '#CED4D8';
 const grayChateau = '#A8AFB3';
 const black = '#000000';
 
-const cinnabar = '#EA4D4D';
-const sinbad = '#9CD8D1';
-const sandDune = '#837569';
-const soyaBean = '#61544B';
-const sage = '#9EA086';
+const islandSpice = '#fffded';
+const goldenFizz = '#fae945';
+const ronchi = '#f1d54c';
+const santasGray = '#9d9daa';
+const stormGray = '#6a6981';
 
-const conch = '#d8e2dc';
-const kerry = '#ffe5d9';
-const pastelPink = '#ffcad4';
-const wewak = '#f4acb7';
-const mountbattenPink = '#9d8189';
 
 export const palette = {
 	white,
-	mystic,
-	iron,
-	grayChateau,
 	black,
-	cinnabar,
-	sinbad,
-	sandDune,
-	soyaBean,
-	sage,
+	islandSpice,
+	goldenFizz,
+	ronchi,
+	santasGray,
+	stormGray,
 };
 
 // Main Color Theme -----------------------------------------------------------
 export const colors = {
 	base: {
-		header: rgba(mountbattenPink,1),
-		text: rgba(mountbattenPink,0.8),
-		background: conch,
+		header: black,
+		text: black,
+		background: santasGray,
+		backgroundDark: stormGray,
 	},
 	shadows: {
-		main: soyaBean,
+		main: black,
+	},
+
+	card: {
+		background: black,//color27,
+		backgroundLight: islandSpice,
+		highlight: black,
+		text: white,
+		header: black,
 	},
 
 	buttonPrimary: {
 		enabled: {
-			background: kerry,
-			text: soyaBean,
+			background: ronchi,
+			text: santasGray,
 		},
 		disabled: {
-			background: rgba(conch, 0.3),
-			text: rgba(grayChateau, 0.4),
+			background: rgba(black, 0.3),
+			text: rgba(black, 0.4),
 		},
 		hover: {
-			background: sinbad,
-			text: white,
+			background: goldenFizz,
+			text: black,
 		},
-		active: rgba(white, 0.2),
+		active: rgba(islandSpice, 0.8),
 	},
 
 	buttonIcon: {
 		enabled: {
 			background: rgba(white, 0),
-			text: cinnabar,
+			text: black,
 		},
 		disabled: {
 			background: rgba(white, 0),
-			text: rgba(cinnabar, 0.2),
+			text: rgba(black, 0.2),
 		},
 		hover: {
 			background: rgba(white, 0),
-			text: sinbad,
+			text: black,
 		},
-		active: rgba(sinbad, 0.4),
+		active: rgba(black, 0.4),
 	},
 
 	buttonSocial: {
 		enabled: {
-			background: rgba(white, 0.2),
-			text: mountbattenPink,
+			background: santasGray,
+			text: ronchi,
 		},
 		disabled: {
-			background: rgba(pastelPink, 0.1),
-			text: rgba(mountbattenPink, 0.2),
+			background: rgba(black, 0.1),
+			text: rgba(black, 0.2),
 		},
 		hover: {
-			background: rgba(white, 0.5),
-			text: sinbad,
+			background: black,
+			text: goldenFizz,
 		},
 		active: white,
 	},
