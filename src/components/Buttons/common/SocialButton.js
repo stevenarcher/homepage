@@ -8,7 +8,7 @@ import React from 'react';
 import styled from 'styled-components';
 import * as commonStyles from './styles';
 import * as commonProps from './props';
-import { colors, typography, transitions, highlights } from '../../../styles';
+import { colors, typography, transitions, highlights, spacing } from '../../../styles';
 
 let color = colors.buttonSocial;
 
@@ -17,16 +17,17 @@ let color = colors.buttonSocial;
 const Wrapper = styled.button`
 	${props => `
 	${commonStyles.base(props)}
-	${transitions.fastEaseOut('color, background-color')}
+	${transitions.slowEaseIn('color, background-color, padding')}
 	svg {
 		z-index: 10;
 		.svgFill {
-			${transitions.fastEaseOut('fill')}
+			${transitions.slowEaseIn('fill')}
 		}
 		.svgStroke { 
-			${transitions.fastEaseOut('stroke')}
+			${transitions.slowEaseIn('stroke')}
 		}
 	}
+	padding: ${spacing(2)};
 	background-color: ${props.enabled ? color.enabled.background : color.disabled.background};
 	color: ${props.enabled ? color.enabled.text : color.disabled.text};
 	height: ${props.width};
@@ -43,13 +44,17 @@ const Wrapper = styled.button`
 	border-radius: 50%;	
 	${typography.buttonLight}
 	&:hover {
+		${transitions.fastEaseOut('color, background-color, padding')}
+		padding: ${spacing(1)};
 		background-color: ${props.enabled ? color.hover.background : color.disabled.background};
 		color: ${props.enabled ? color.hover.text : color.disabled.text};
 		svg {
 			.svgFill {
+				${transitions.fastEaseOut('fill')}
 				fill: ${color.hover.text};
 			}
 			.svgStroke {
+				${transitions.fastEaseOut('stroke')}
 				stroke: ${color.hover.text};
 			}
 		}

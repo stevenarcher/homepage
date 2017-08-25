@@ -72,8 +72,8 @@ const style = ({ size, weight, fontStyle = 'normal', lineHeight = 'normal', lett
 
 export const style1 = style({ size: 13, weight: bold, lineHeight: '15px' });
 
-export const header1 = style({ size: 42, weight: regular, lineHeight:'40px', letterSpacing: '1px', font: fonts.title });
-export const header2 = style({ size: 22, weight: regular, lineHeight: '20px', font: fonts.title });
+export const header1 = style({ size: 32, weight: regular, lineHeight:'40px', letterSpacing: '0px', font: fonts.title});
+export const header2 = style({ size: 22, weight: regular, lineHeight: '20px', font: fonts.main });
 
 export const body = style({ size: 15, weight: regular, lineHeight: '22px' });
 

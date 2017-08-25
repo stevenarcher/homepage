@@ -27,7 +27,6 @@ injectGlobal`
 			-webkit-app-region: no-drag;
 		}
 		
-		background-color: ${color.background};
 		color: ${color.text};
 		${typography.body}		
 	}

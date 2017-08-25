@@ -46,9 +46,9 @@ export const underline = (backgroundImage = 'linear-gradient(120deg, #84fab0 0%,
 	background-image: ${backgroundImage};
 	background-repeat: no-repeat;
 	background-size: 100% 0.2em;
-	background-position: 0 88%;
+	background-position: 0 100%;
 	transition: background-size 0.25s ease-in;
 	&:hover {
-		background-size: 100% 88%;
+		background-size: 100% 100%;
 	}
 `;

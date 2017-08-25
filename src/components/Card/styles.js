@@ -1,32 +1,38 @@
 import styled from 'styled-components';
-import { colors, typography, shadows } from '../../styles';
-
-const color = colors.buttonPrimary;
+import { colors, typography, shadows, highlights, spacing } from '../../styles';
+import { rgba } from 'polished';
+const color = colors.card;
 
 export const Wrapper = styled.div`
 	${props => `		
     position: relative;
-    margin: 0;
+    margin: ${spacing(1)};
+    padding: ${spacing(2)};
     overflow: hidden;
     width: ${props.width};
     height: ${props.height};
     ${shadows.outerLarge}
-    background-image: url("./images/placeholder.jpg");
+    color: ${colors.card.text};
+    background-color: ${colors.card.background};
     background-position: center;
     background-size: cover;
 	`};
 `;
 
-export const Title = styled.h2`
+export const Title = styled.span`
 	margin: 0px;
+	display: inline-block;
+	padding: ${spacing(1)};
+	border-radius: ${spacing(1)};
 	${typography.header1};
-	color: ${color.base.header};
-	background-color: ${}
+	color: ${color.text};
+	background-color: ${rgba('#ffffff',0.3)};
 `;
 
 export const Description = styled.div`
 	margin: 0px;
 	padding-bottom: 30px;
 	${typography.header2}
-	color: ${colors.base.text};
+	color: ${color.text};
+	background-color: ${colors.card.background};
 `;
