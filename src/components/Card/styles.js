@@ -22,8 +22,7 @@ export const Wrapper = styled.div`
 export const Title = styled.span`
 	margin: 0px;
 	display: inline-block;
-	padding: ${spacing(1)};
-	border-radius: ${spacing(1)};
+	padding: ${spacing(1)} ${spacing(3)};
 	${typography.header1};
 	color: ${color.text};
 	background-color: ${rgba('#ffffff',0.3)};
@@ -32,7 +31,7 @@ export const Title = styled.span`
 export const Description = styled.div`
 	margin: 0px;
 	padding-bottom: 30px;
-	${typography.header2}
+	${typography.style1}
 	color: ${color.text};
 	background-color: ${colors.card.background};
 `;
