@@ -4,7 +4,7 @@
  */
 
 import styled from 'styled-components';
-import { colors, typography } from '../../styles';
+import { colors, typography, spacing } from '../../styles';
 
 const color = colors.base;
 

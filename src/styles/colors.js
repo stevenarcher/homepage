@@ -43,11 +43,11 @@ export const colors = {
 	},
 
 	card: {
-		background: black,//color27,
+		background: santasGray,//color27,
 		backgroundLight: islandSpice,
 		highlight: black,
-		text: white,
-		header: black,
+		text: islandSpice,
+		header: goldenFizz,
 	},
 
 	buttonPrimary: {
@@ -92,10 +92,10 @@ export const colors = {
 			text: rgba(black, 0.2),
 		},
 		hover: {
-			background: black,
+			background: santasGray,
 			text: goldenFizz,
 		},
-		active: white,
+		active: stormGray,
 	},
 };
 

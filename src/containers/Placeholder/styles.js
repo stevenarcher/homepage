@@ -13,7 +13,7 @@ const color = colors.base;
 injectGlobal`
 	body {
 		background: ${color.background};
-		background: linear-gradient(${color.background}, ${color.backgroundDark});
+		background: linear-gradient(${rgba(color.backgroundDark,0.9)}, ${color.backgroundDark});
 	}
 `;
 

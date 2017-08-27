@@ -70,7 +70,7 @@ const style = ({ size, weight, fontStyle = 'normal', lineHeight = 'normal', lett
   letter-spacing: ${letterSpacing};
 `;
 
-export const style1 = style({ size: 13, weight: bold, lineHeight: '15px' });
+export const style1 = style({ size: 13, weight: thin, letterSpacing: '1px', lineHeight: '15px', font: fonts.main });
 
 export const header1 = style({ size: 32, weight: regular, lineHeight:'40px', letterSpacing: '0px', font: fonts.title});
 export const header2 = style({ size: 22, weight: regular, lineHeight: '20px', font: fonts.main });
