@@ -5,6 +5,7 @@
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { colors } from '../../styles';
 import { Wrapper, Title } from './styles';
 import * as material from '../../threejs/Materials';
 import * as THREE from 'three';
@@ -18,7 +19,7 @@ class Header extends Component {
 			width: 200,
 			height: 200,
 		};
-		this.sphere = new THREE.SphereGeometry(0.25, 8, 8);
+		this.sphere = new THREE.RingGeometry(2,6,10,10,10,10); //new THREE.SphereGeometry(0.25, 8, 8);
 		this.mesh = new THREE.Mesh(this.sphere, material.plastic);
 
 		this.light = new THREE.DirectionalLight(0xffedc3, 0.6);
@@ -39,7 +40,7 @@ class Header extends Component {
 	 * @param {number} delta - the time since the last update
 	 */
 	update = delta => {
-		this.mesh.position.z += 0.005;
+		this.mesh.rotation.z += 0.02;
 	};
 
 	render() {
@@ -49,7 +50,7 @@ class Header extends Component {
 					this.wrapper = element;
 				}}
 			>
-				<Renderer width={500} height={90}>
+				<Renderer width={500} height={90} backgroundColor={colors.base.background}>
 					{[this.mesh, this.light]}
 				</Renderer>
 				<Title>

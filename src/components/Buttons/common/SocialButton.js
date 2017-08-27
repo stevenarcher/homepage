@@ -44,7 +44,7 @@ const Wrapper = styled.button`
 	border-radius: 50%;	
 	${typography.buttonLight}
 	&:hover {
-		${transitions.fastEaseOut('color, background-color, padding')}
+		transition-duration: 0s;
 		padding: ${spacing(1)};
 		background-color: ${props.enabled ? color.hover.background : color.disabled.background};
 		color: ${props.enabled ? color.hover.text : color.disabled.text};
@@ -59,7 +59,8 @@ const Wrapper = styled.button`
 			}
 		}
 	}
-	${props.enabled ? highlights.ripple(color.active, 'active', '90%', 'after') : ''};
+	${props.enabled ? highlights.ripple(color.active, 'hover', '100%', 'before') : ''};
+	${props.enabled ? highlights.ripple(color.enabled.text, 'active', '100%', 'after') : ''};
 `};
 `;
 

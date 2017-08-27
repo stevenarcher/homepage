@@ -18,14 +18,15 @@ export class Social extends PureComponent {
 	};
 
 	render() {
+		const width = '48px';
 		return (
 			<Wrapper>
-				<GitHubButton onClick={() => { this.openURL('https://github.com/stevenarcher') }}/>
-				<BitBucketButton onClick={() => { this.openURL('https://bitbucket.org/stevenarcher') }}/>
-				<LinkedInButton onClick={() => { this.openURL('http://uk.linkedin.com/pub/steven-archer/17/872/16b') }}/>
-				<TwitterButton onClick={() => { this.openURL('http://twitter.com/stevenarcher') }}/>
-				<FlickrButton onClick={() => { this.openURL('http://www.flickr.com/photos/stevenarcher') }}/>
-				<YouTubeButton onClick={() => { this.openURL('http://www.youtube.com/user/stevenmarcher') }}/>
+				<GitHubButton width={width} onClick={() => { this.openURL('https://github.com/stevenarcher') }}/>
+				<BitBucketButton width={width} onClick={() => { this.openURL('https://bitbucket.org/stevenarcher') }}/>
+				<LinkedInButton width={width} onClick={() => { this.openURL('http://uk.linkedin.com/pub/steven-archer/17/872/16b') }}/>
+				<TwitterButton width={width} onClick={() => { this.openURL('http://twitter.com/stevenarcher') }}/>
+				<FlickrButton width={width} onClick={() => { this.openURL('http://www.flickr.com/photos/stevenarcher') }}/>
+				<YouTubeButton width={width} onClick={() => { this.openURL('http://www.youtube.com/user/stevenmarcher') }}/>
 			</Wrapper>
 		);
 	}

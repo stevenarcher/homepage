@@ -23,6 +23,13 @@ class UpdateLoop {
 						};
 	}
 
+	updateOnce = () => {
+		if (!this._isUpdating) {
+			this._lastTimeUpdated = this._now();
+			this._loop();
+		}
+	};
+
 	/**
 	 * Add
 	 * @param {IUpdatable} updateToAdd - object that contains a update function
