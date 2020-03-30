@@ -1,0 +1,52 @@
+{
+  "name": "gatsby-starter-typescript",
+  "description": "Gatsby TypeScript starter",
+  "version": "1.0.0",
+  "author": "Steven Archer <email@stevenarcher.com>",
+  "dependencies": {
+    "@testing-library/react": "^10.0.1",
+    "@types/node": "^8.0.7",
+    "@types/react": "^16.9.25",
+    "@types/react-dom": "0.14.23",
+    "@types/react-helmet": "^5.0.15",
+    "gatsby": "^2.18.5",
+    "gatsby-plugin-react-helmet": "^3.1.18",
+    "gatsby-plugin-typescript": "^2.1.15",
+    "plop": "^2.6.0",
+    "react": "^16.10.2",
+    "react-dom": "^16.10.2",
+    "react-docgen-typescript-loader": "^3.7.1",
+    "react-grid-system": "^6.3.0",
+    "react-helmet": "^5.2.1",
+    "react-scripts": "3.4.0",
+    "styled-components": "^5.0.1",
+    "typescript": "^3.6.4"
+  },
+  "keywords": [
+    "gatsby, typescript"
+  ],
+  "license": "MIT",
+  "main": "n/a",
+  "scripts": {
+    "build": "gatsby build",
+    "develop": "gatsby develop",
+    "format": "prettier --parser typescript --trailing-comma es5 --no-semi --single-quote --write \"src/**/*.ts*\"",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.6.4",
+    "@storybook/addon-a11y": "^5.3.17",
+    "@storybook/addon-actions": "^5.3.17",
+    "@storybook/addon-docs": "^5.3.17",
+    "@storybook/addon-links": "^5.3.17",
+    "@storybook/addons": "^5.3.17",
+    "@storybook/preset-create-react-app": "^2.0.0",
+    "@storybook/react": "^5.3.17",
+    "@storybook/theming": "^5.3.17",
+    "babel-jest": "^24.9.0",
+    "babel-loader": "^8.0.6",
+    "prettier": "^1.8.2"
+  }
+}

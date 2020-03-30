@@ -1,0 +1,29 @@
+<head>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet">
+  </head>
+  <style>
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: 'Roboto', sans-serif;
+        font-weight: 400;
+      }
+
+      /* re-style react-router-dom <Link> */
+      a {
+        text-decoration: none;
+      }
+      a:focus {
+        outline: none;
+        text-decoration: none;
+      }
+  
+    </style>
+    <script>
+      ;(function(l) {
+        var i,
+          s = { touchend: function() {} }
+        for (i in s) l.addEventListener(i, s)
+      })(document) // sticky hover fix in iOS
+    </script>

@@ -1,0 +1,16 @@
+import styled from 'styled-components';
+
+export interface I{{pascalCase name}}Styles {
+	/** Example prop please replace or remove! */
+	example{{pascalCase name}}Style?: string
+}
+
+export const Styled{{pascalCase name}} = styled.div<I{{pascalCase name}}Styles>({
+	margin: 4,
+	padding: 12,
+	color: `#000`,
+	background: `hotpink`,
+	fontFamily: `monospace`
+}, ({ example{{pascalCase name}}Style }: I{{pascalCase name}}Styles) => ({
+	example{{pascalCase name}}Style
+}))

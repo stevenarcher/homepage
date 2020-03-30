@@ -1,0 +1,9 @@
+import { shallow } from 'enzyme'
+import { usage } from './{{pascalCase name}}.stories'
+
+describe('<{{pascalCase name}}>', () => {
+	it('renders correctly', () => {
+		const wrapper = shallow(usage())
+		expect(wrapper).toMatchSnapshot()
+  })
+});
