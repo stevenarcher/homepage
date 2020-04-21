@@ -9,13 +9,15 @@
     "@types/react": "^16.9.25",
     "@types/react-dom": "0.14.23",
     "@types/react-helmet": "^5.0.15",
+    "@types/styled-components": "^5.0.1",
+    "enzyme": "^3.11.0",
     "gatsby": "^2.18.5",
     "gatsby-plugin-react-helmet": "^3.1.18",
     "gatsby-plugin-typescript": "^2.1.15",
     "plop": "^2.6.0",
     "react": "^16.10.2",
-    "react-dom": "^16.10.2",
     "react-docgen-typescript-loader": "^3.7.1",
+    "react-dom": "^16.10.2",
     "react-grid-system": "^6.3.0",
     "react-helmet": "^5.2.1",
     "react-scripts": "3.4.0",
@@ -29,11 +31,18 @@
   "main": "n/a",
   "scripts": {
     "build": "gatsby build",
-    "develop": "gatsby develop",
+    "dev": "gatsby develop",
+    "create": "plop",
+    "prettier": "prettier --write \"src/**/*.*\" \"generate/**/*.*\" \"docs/**/*.*\" \"*.json\" \"*.js\" \"*.md\" *.config.js",
+    "lint": "eslint \"src/**/*.{js,ts,tsx}\" --quiet",
+    "lint:fix": "eslint \"src/**/*.{js,ts,tsx}\" --fix --quiet",
     "format": "prettier --parser typescript --trailing-comma es5 --no-semi --single-quote --write \"src/**/*.ts*\"",
     "test": "echo \"Error: no test specified\" && exit 1",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
   },
   "devDependencies": {
     "@babel/core": "^7.6.4",
@@ -47,6 +56,10 @@
     "@storybook/theming": "^5.3.17",
     "babel-jest": "^24.9.0",
     "babel-loader": "^8.0.6",
+    "eslint-config-prettier": "^6.0.0",
+    "eslint-config-react": "^1.1.7",
+    "eslint-plugin-prettier": "^3.1.0",
+    "eslint-plugin-react": "^7.14.3",
     "prettier": "^1.8.2"
   }
 }

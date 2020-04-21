@@ -10,9 +10,8 @@ import { withA11y } from '@storybook/addon-a11y'
 addParameters({
   options: {
     theme: create({
-      brandTitle: 'Tropic',
+      brandTitle: 'Steven Archer',
       brandUrl: 'https://www.stevenarcher.com/',
-      brandImage: 'https://i.pinimg.com/originals/2c/fc/93/2cfc93d7665f5d7728782700e50596e3.png',
 
     }),
     isFullscreen: false,
