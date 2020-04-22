@@ -1,3 +1,7 @@
-import { NeumorphicTheme  as Theme } from './NeumorphicTheme';
+import {DefaultTheme} from './DefaultTheme';
 
-export default Theme;
+let Theme = DefaultTheme;
+
+const setTheme = (theme) => Theme = theme;
+
+export {Theme, setTheme}

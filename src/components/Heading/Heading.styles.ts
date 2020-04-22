@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import { IHeadingStyles } from './Heading'
-import Theme from "../../theme";
+import { Theme } from '../../theme';
 
 
 const getHeadingStyles = (as: string) => {

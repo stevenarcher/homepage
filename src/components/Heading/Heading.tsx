@@ -1,6 +1,6 @@
-import React from 'react'
+import React, {FunctionComponent} from 'react'
 import { StyledHeading } from './Heading.styles'
-import Theme from '../../theme';
+import { Theme } from '../../theme';
 import {ITypographyStyles} from '../Text';
 
 export interface IHeadingStyles extends ITypographyStyles {
@@ -12,14 +12,11 @@ export interface IHeadingStyles extends ITypographyStyles {
 
 interface IHeadingProps extends IHeadingStyles {}
 
-export const Heading: React.FC<IHeadingProps> = ({
-  className = '',
+export const Heading: FunctionComponent<IHeadingProps> = ({
   children,
   as,
   textAlign = 'left',
-  fontWeight = Theme.fontWeights[
-    Theme.fontWeights.regular
-  ] as keyof typeof Theme.fontWeights,
+  fontWeight = Theme.fontWeights.medium,
   color = Theme.colors.darkGrey as keyof typeof Theme.colors,
   marginTop = 0,
   marginRight = 0,
@@ -30,7 +27,6 @@ export const Heading: React.FC<IHeadingProps> = ({
   hasBottomBorder
 }) => (
   <StyledHeading
-    className={`-heading ${className}`}
     as={as}
     textAlign={textAlign}
     fontWeight={fontWeight}

@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import Theme from "../../theme";
+import { Theme } from '../../theme';
 import { IButtonGroupStyles } from './ButtonGroup'
 
 export const StyledButtonGroup = styled.div<IButtonGroupStyles>(

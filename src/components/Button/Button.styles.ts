@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { lighten, darken, transparentize } from "polished";
 import { ButtonVariant, IButtonStyles } from "./Button";
-import Theme from "../../theme";
+import { Theme } from '../../theme';
 
 const getDisabledStyles = (disabled: boolean) => disabled ? {
 	cursor: "not-allowed",
@@ -22,7 +22,7 @@ const getButtonColors = (variant: ButtonVariant, disabled:boolean):IButtonColors
 	switch (variant) {
 		case ButtonVariant.GHOST:
 			return {
-				color: transparentize( disabled ? 0.5 : 0,Theme.colors.secondaryDark),
+				color: transparentize( disabled ? 0.5 : 0,Theme.colors.black),
 				borderColor: Theme.colors.transparent,
 				backgroundColor: Theme.colors.transparent,
 				hoverColor: darken(0.03, Theme.colors.lightGrey),

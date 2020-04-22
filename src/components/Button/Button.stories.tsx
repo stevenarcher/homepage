@@ -3,8 +3,9 @@ import {action} from '@storybook/addon-actions';
 import {Button} from '.';
 import {ButtonGroup} from '../ButtonGroup';
 import {Icon} from '../Icon';
-import Theme from '../../theme';
+import {Theme} from '../../theme';
 import {ButtonVariant} from './Button';
+import {IconName} from '../Icon/IconName';
 
 const handleClick = (event: React.MouseEvent<any>) => {
 	action("handleClick")(event.currentTarget, event.currentTarget.type);
@@ -72,7 +73,7 @@ type.story = {
 };
 
 export const display = () => (
-	<Button variant={ButtonVariant.PRIMARY} display="block">
+	<Button variant="primary" display="block">
 		Primary
 	</Button>
 );
@@ -91,21 +92,21 @@ export const disabled = () => (
 		<Button
 			disabled
 			onClick={(event: React.MouseEvent) => handleClick(event)}
-			variant={ButtonVariant.GHOST}
+			variant="ghost"
 		>
 			Ghost
 		</Button>
 		<Button
 			disabled
 			onClick={(event: React.MouseEvent) => handleClick(event)}
-			variant={ButtonVariant.PRIMARY}
+			variant="primary"
 		>
 			Primary
 		</Button>
 		<Button
 			disabled
 			onClick={(event: React.MouseEvent) => handleClick(event)}
-			variant={ButtonVariant.SECONDARY}
+			variant="secondary"
 		>
 			Secondary
 		</Button>
@@ -143,10 +144,10 @@ export const functionalTest = () => (
 			target="_blank"
 			style={{ textDecoration: "none" }}
 		>
-			<Button variant={ButtonVariant.GHOST} as="div">
+			<Button variant="ghost" as="div">
 				Ghost
 				<Icon
-					iconName="baseline_keyboard_arrow_right"
+					iconName={IconName.ADD}
 					style={{ marginLeft: Theme.space[2] }}
 				/>
 			</Button>
@@ -156,10 +157,10 @@ export const functionalTest = () => (
 			target="_blank"
 			style={{ textDecoration: "none" }}
 		>
-			<Button variant={ButtonVariant.PRIMARY} as="div">
+			<Button variant="primary" as="div">
 				Primary
 				<Icon
-					iconName="baseline_keyboard_arrow_right"
+					iconName={IconName.WARNING}
 					style={{ marginLeft: Theme.space[2] }}
 				/>
 			</Button>
@@ -169,10 +170,10 @@ export const functionalTest = () => (
 			target="_blank"
 			style={{ textDecoration: "none" }}
 		>
-			<Button variant={ButtonVariant.SECONDARY} as="div">
+			<Button variant="secondary" as="div">
 				Secondary
 				<Icon
-					iconName="baseline_keyboard_arrow_right"
+					iconName={IconName.ERROR}
 					style={{ marginLeft: Theme.space[2] }}
 				/>
 			</Button>

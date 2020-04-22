@@ -1,6 +1,6 @@
 import React, { FunctionComponent, ReactNode } from "react";
 import { StyledButtonGroup } from "./ButtonGroup.styles";
-import Theme from '../../theme';
+import { Theme } from '../../theme';
 
 export interface IButtonGroupStyles {
   /** The space between the buttons */

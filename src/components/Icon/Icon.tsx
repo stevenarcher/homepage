@@ -1,17 +1,18 @@
-import React, {HTMLAttributes} from 'react';
+import React, {FunctionComponent, HTMLAttributes} from 'react';
 import { StyledSvg } from './Icon.styles';
 import { paths } from './Icon.paths';
+import {IconName} from './IconName';
 
 interface IIconProps extends HTMLAttributes<HTMLOrSVGElement> {
   /** The name of icon from paths */
-  iconName: string
+  iconName: IconName
   /** The icon fill */
   iconFill?: 'initial' | 'inherit' | 'currentcolor' | string
   /**  The icon size */
   iconSize?: string | number
 }
 
-export const Icon: React.FC<IIconProps> = ({
+export const Icon: FunctionComponent<IIconProps> = ({
   style,
   className,
   iconName,

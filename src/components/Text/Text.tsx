@@ -1,6 +1,6 @@
 import React, {FunctionComponent} from 'react';
 import { StyledText } from './Text.styles';
-import Theme from '../../theme';
+import { Theme } from '../../theme';
 
 export interface ITypographyStyles {
   /** Css line-height value*/
@@ -12,7 +12,7 @@ export interface ITypographyStyles {
   /** Css font-size value*/
   fontSize?: keyof typeof Theme.fontSizes
   /** Css font-weight value*/
-  fontWeight?: keyof typeof Theme.fontWeights
+  fontWeight?: string | number
   /** Css color value*/
   color?: keyof typeof Theme.colors | string
   /** Css margin-top value*/
@@ -57,9 +57,7 @@ export const Text: FunctionComponent<ITextProps> = ({
   as,
   textAlign = 'left',
   fontSize = Theme.fontSizes[2],
-  fontWeight = Theme.fontWeights[
-    Theme.fontWeights.regular
-  ] as keyof typeof Theme.fontWeights,
+  fontWeight = Theme.fontWeights.regular,
   color = Theme.colors.darkGrey as keyof typeof Theme.colors,
   marginTop = 0,
   marginRight = 0,

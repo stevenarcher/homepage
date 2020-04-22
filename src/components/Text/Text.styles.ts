@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import { ITextStyles } from './Text'
-import Theme from "../../theme";
+import { Theme } from '../../theme';
 
 export const StyledText = styled.p<ITextStyles>(
   {

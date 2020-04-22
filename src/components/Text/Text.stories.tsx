@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { Text } from '.'
-import Theme from "../../theme";
+import { Theme } from '../../theme';
 
 export default {
   title: 'Text',

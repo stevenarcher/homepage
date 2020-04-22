@@ -1,6 +1,6 @@
 import React from 'react'
 import { Heading } from '.'
-import Theme from "../../theme";
+import { Theme } from '../../theme';
 
 export default {
   title: 'Heading',

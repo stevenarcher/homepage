@@ -1,24 +1,24 @@
-import * as React from 'react'
-import { Icon } from '.'
-import { Text } from '../Text'
-import { Heading } from '../Heading'
-import Theme from "../../theme";
-import { DemoUl, DemoLi, DemoBox } from './Icon.styles'
+import * as React from 'react';
+import {Icon} from '.';
+import {Text} from '../Text';
+import {Heading} from '../Heading';
+import {Theme} from '../../theme';
+import {DemoBox, DemoLi, DemoUl} from './Icon.styles';
+import {paths} from './Icon.paths';
+import {IconName} from './IconName';
 
-import { paths } from './Icon.paths'
-
-const allIcons = Object.keys(paths).map((path: string, index: number) => {
+const allIcons = Object.keys(paths).map((iconName: IconName, index: number) => {
   return (
     <DemoLi key={index}>
       <DemoBox>
-        <Icon iconName={path} iconSize={Theme.fontSizes[6]} />
+        <Icon iconName={iconName} iconSize={Theme.fontSizes[6]} />
         <Text
           as="span"
           color={Theme.colors.grey}
           textAlign="center"
           marginTop={Theme.space[4]}
         >
-          {path}
+          {iconName}
         </Text>
       </DemoBox>
     </DemoLi>
@@ -35,11 +35,11 @@ export default {
 }
 
 export const usage = () => (
-  <Icon iconName="baseline_info">Click me</Icon>
+  <Icon iconName={IconName.WARNING}>Click me</Icon>
 );
 
 export const className = () => (
-  <Icon className="some-class" iconName="baseline_info">
+  <Icon className="some-class" iconName={IconName.WARNING}>
     Click me
   </Icon>
 );
@@ -62,7 +62,7 @@ allPaths.story = {
   }
 };
 
-export const iconName = () => <Icon iconName="baseline_add_circle" />;
+export const iconName = () => <Icon iconName={IconName.ADD} />
 
 iconName.story = {
   parameters: {
@@ -74,7 +74,7 @@ iconName.story = {
 };
 
 export const iconFill = () => (
-  <Icon iconFill={Theme.colors.primary} iconName="baseline_info" />
+  <Icon iconFill={Theme.colors.primary} iconName={IconName.ADD} />
 );
 
 iconFill.story = {
@@ -87,7 +87,7 @@ iconFill.story = {
 };
 
 export const iconSize = () => (
-  <Icon iconSize={96} iconName="baseline_info" />
+  <Icon iconSize={96} iconName={IconName.ADD} />
 );
 
 iconSize.story = {
@@ -100,7 +100,7 @@ iconSize.story = {
 };
 
 export const style = () => (
-  <Icon style={{ margin: 32 }} iconName="baseline_info" />
+  <Icon style={{ margin: 32 }} iconName={IconName.ADD} />
 );
 style.story = {
   parameters: {
@@ -113,7 +113,7 @@ style.story = {
 
 export const functionalTest = () => (
   <div style={{ display: 'flex', alignItems: 'center' }}>
-    <Icon iconName="baseline_info" iconSize={Theme.fontSizes[8]} />
+    <Icon iconName={IconName.ADD} iconSize={Theme.fontSizes[8]} />
     <Heading as="h1" display="inline">
       Heading
     </Heading>
