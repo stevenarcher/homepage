@@ -1,0 +1,73 @@
+---
+interface Props {
+	title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="description" content="Astro description" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{title}</title>
+	</head>
+	<body>
+		<slot />
+	</body>
+</html>
+<style is:global>
+	:root {
+		--accent: 234, 58, 136;
+		--accent-light: 250, 204, 224;
+		--accent-dark: 101, 10, 49;
+		--accent-gradient: linear-gradient(
+			45deg,
+			rgb(var(--accent)),
+			rgb(var(--accent-light)) 30%,
+			white 60%
+		);
+	}
+	a {
+		padding: 1rem;
+		background-color: rgba(var(--accent-light), 0);
+		text-decoration: none;
+		color: rgba(var(--accent));
+		transition: color 0.2s ease-out, background-color 0.4s ease-out;
+		border: rgba(var(--accent), 0) 1px solid;
+		&:hover {
+			text-decoration: underline;
+			color: rgba(var(--accent-dark));
+			background-color: rgba(var(--accent-light), 0.5);
+		}
+	}
+	ul {
+		list-style: none;
+		padding: 0;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		gap: 2rem;
+		flex-direction: column;
+	}
+	html {
+		font-family: system-ui, sans-serif;
+		background: linear-gradient(#ffefde, #e6d6c5);
+		background-attachment: fixed;
+	}
+	code {
+		font-family:
+			Menlo,
+			Monaco,
+			Lucida Console,
+			Liberation Mono,
+			DejaVu Sans Mono,
+			Bitstream Vera Sans Mono,
+			Courier New,
+			monospace;
+	}
+</style>
