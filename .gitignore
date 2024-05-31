@@ -1,25 +1,59 @@
-# build output
-dist/
+### STANDARD GIT IGNORE FILE ###
 
-# generated types
-.astro/
-
-# dependencies
+# DEPENDENCIES
 node_modules/
+/.pnp
+.pnp.js
+package-lock.json
+yarn.lock
 
-# logs
+# TESTING
+/coverage
+*.lcov
+.nyc_output
+
+# BUILD
+build/
+public/build/
+dist/
+generated/
+
+# ENV FILES
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# LOGS
+logs
+*.log
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-pnpm-debug.log*
 
-# environment variables
-.env
-.env.production
-
-# macOS-specific files
-.DS_Store
-
-# IDEs
-.vscode
+# MISC
 .idea
+.cache/
+.next/
+next-env.d.ts
+.nuxt/
+tmp/
+temp/
+.docusaurus
+*.tsbuildinfo
+
+# MAC
+._*
+.DS_Store
+Thumbs.db
+
+.turbo
+.vercel
+
+# Emacs backup files
+\#*
+.\#*
+
+# TYPESCRIPT
+*.tsbuildinfo
