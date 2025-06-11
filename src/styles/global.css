@@ -1,0 +1,75 @@
+@import "tailwindcss";
+@import "./typography.css";
+@config "../../tailwind.config.mjs";
+
+
+
+@custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
+
+:root,
+html[data-theme="light"] {
+  --background: rgb(217, 217, 217);
+  --foreground: #282728;
+  --accent: rgb(242, 68, 44);
+  --muted: #e6e6e6;
+  --border: #afa89b;
+}
+
+html[data-theme="dark"] {
+  --background: #333446;
+  --foreground: rgb(229, 231, 235);
+  --accent: #6FE6FC;
+  --muted: #7F8CAA;
+  --border: #879496;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-accent: var(--accent);
+  --color-muted: var(--muted);
+  --color-border: var(--border);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-accent/75;
+    scrollbar-width: auto;
+    scrollbar-color: var(--color-muted) transparent;
+  }
+  html {
+    @apply overflow-y-scroll scroll-smooth;
+  }
+  body {
+    @apply flex min-h-svh flex-col bg-background font-mono text-foreground selection:bg-accent/75 selection:text-background;
+  }
+  a,
+  button {
+    @apply outline-offset-1 outline-accent focus-visible:no-underline focus-visible:outline-2 focus-visible:outline-dashed;
+  }
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+  section,
+  footer {
+    @apply mx-auto max-w-app px-4;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-sans font-normal;
+  }
+}
+
+@utility max-w-app {
+  @apply max-w-3xl;
+}
+
+.active-nav {
+  @apply underline decoration-solid decoration-3 underline-offset-8 text-accent;
+}
+
+/* Source: https://piccalil.li/blog/a-more-modern-css-reset/ */
+/* Anything that has been anchored to should have extra scroll margin */
+:target {
+  scroll-margin-block: 1rem;
+}

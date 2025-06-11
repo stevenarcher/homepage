@@ -1,0 +1,86 @@
+---
+author: Steven Archer
+pubDatetime: 2025-06-11T16:15:43.00Z
+modDatetime: 2025-06-11T16:15:43.00Z
+title: Cubic Bézier Curve Editor
+slug: cubic-bezier-curve-editor
+featured: true
+tags:
+  - web dev
+  - svg
+  - javascript
+  - math
+  - editor
+description: Interactive bézier curve editor for modeling vehicle movement
+---
+
+import BezierCurveEditor from 'src/components/blog/BezierCurveEditor.tsx';
+
+Cubic Bézier curves are powerful tools for mathematically defining non-linear motion between two points. In this post, we’ll explore how to create, edit, and use cubic Bézier curves in a game loop. Our goal is to model a simplified arcade-style vehicle behavior that’s efficient to compute in real-time.
+
+
+## What Is a Cubic Bézier Curve?
+
+A cubic bézier curve is defined by four points:
+
+- `P₀`: Start point
+- `P₁`: First control point
+- `P₂`: Second control point
+- `P₃`: End point
+
+<img
+  alt="Cubic Bézier formula"
+  className="border-0 pb-8"
+  src="https://latex.codecogs.com/svg.image?B(t)%20=%20(1-t)^3P_0%20+%203(1-t)^2tP_1%20+%203(1-t)t^2P_2%20+%20t^3P_3"
+/>
+
+# Editor
+
+To begin, I built a simple GUI for creating and editing cubic Bézier curves. These curves can model behavior such as acceleration or turning effectiveness based on velocity.
+
+### Acceleration
+
+In this example, the vehicle's acceleration rate peaks early—just after it starts moving—and then gradually decreases as it nears top speed. This simplified model avoids complex calculations suited to an arcade game rather than a simulation.
+
+<BezierCurveEditor
+  id="acceleration"
+  xPercentage={500}
+  xLabel="Velocity"
+  yLabel="Rate of Acceleration"
+  initialState={{
+    start: { x: 0, y: 250 },
+    end: { x: 500, y: 0 },
+    controlPoints: [
+      { x: 150, y: 450 },
+      { x: 290, y: 0 },
+    ],
+  }}
+  client:load
+/>
+
+### Turning effectiveness
+
+At high speeds, the turning radius should be large (less responsive), while at slower speeds it should be tighter. To simulate realistic behavior, turning effectiveness should be zero when there’s no forward momentum.
+
+<BezierCurveEditor
+  id="turning"
+  xPercentage={500}
+  xLabel="Velocity"
+  yLabel="Rate of Turning"
+  initialState={{
+    start: { x: 0, y: 0 },
+    end: { x: 500, y: 70 },
+    controlPoints: [
+      { x: 0, y: 450 },
+      { x: 150, y: 100 },
+    ],
+  }}
+  client:load
+/>
+
+## Optimise for a game loop
+
+Rather than evaluating Bézier equations every frame, we can optimize performance by precomputing curve values into a lookup table. This allows for fast interpolation with minimal CPU cost during runtime.
+
+
+
