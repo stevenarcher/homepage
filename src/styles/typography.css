@@ -1,7 +1,26 @@
 @plugin '@tailwindcss/typography';
 
+@font-face {
+  font-family: 'Josefin Sans';
+  src: url('../../public/fonts/JosefinSans-Regular.woff2') format('woff2'),
+  url('../../public/fonts/JosefinSans-Regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'JetBrains Mono';
+  src: url('../../public/fonts/JetBrainsMono-Regular.woff2') format('woff2'),
+  url('../../public/fonts/JetBrainsMono-Regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+
 @theme {
-  --font-display: "Oswald", "sans-serif";
+  --font-display: "Josefin Sans", "sans-serif";
 }
 
 @layer base {

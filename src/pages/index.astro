@@ -25,12 +25,12 @@ const recentPosts = sortedPosts.filter(({ data }) => !data.featured);
   <main id="main-content" data-layout="index">
     <section id="hero" class="pb-6 pt-8">
       <h1
-        class="text-accent mt-4 inline-block w-full text-center font-sans text-xl font-normal uppercase sm:mt-8 sm:text-6xl"
+        class="text-accent mt-4 inline-block w-full text-center font-sans text-5xl font-normal uppercase sm:mt-8 sm:text-6xl"
       >
         Steven Archer
       </h1>
       <h2 class="mb-4 w-full text-center font-mono uppercase sm:mb-8">
-        - Software Engineer -
+        - - - Software Engineer - - -
       </h2>
 
       <p>
@@ -42,7 +42,7 @@ const recentPosts = sortedPosts.filter(({ data }) => !data.featured);
       {
         // only display if at least one social link is enabled
         SOCIALS.length > 0 && (
-          <div class="mt-4 flex flex-col justify-center sm:flex-row sm:items-center">
+          <div class="mt-4 flex flex-col justify-center sm:flex-row items-center">
             <Socials />
           </div>
         )

@@ -36,6 +36,12 @@ async function loadGoogleFonts(
 > {
   const fontsConfig = [
     {
+      name: "Josefin Sans",
+      font: "Josefin+Sans",
+      weight: 400,
+      style: "normal",
+    },
+    {
       name: "JetBrains Mono",
       font: "JetBrains+Mono",
       weight: 400,

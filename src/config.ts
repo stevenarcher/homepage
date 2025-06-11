@@ -12,7 +12,7 @@ export const SITE = {
   showArchives: false,
   showBackButton: false,
   editPost: {
-    enabled: true,
+    enabled: false,
     text: "Suggest Changes",
     url: "mailto:email@stevenarcher.com",
   },
