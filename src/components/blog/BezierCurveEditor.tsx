@@ -149,7 +149,7 @@ const BezierCurveEditor: FunctionComponent<BezierCurveEditorProps> = ({
           y1={0}
           x2={x}
           y2={HEIGHT}
-          stroke={x === OFFSET_X ? "#282728" : "rgba(200,200,200,0.3)"}
+          stroke={x === OFFSET_X ? "var(--foreground)" : "rgba(200,200,200,0.3)"}
         />
       );
     }
@@ -161,7 +161,7 @@ const BezierCurveEditor: FunctionComponent<BezierCurveEditorProps> = ({
           y1={y}
           x2={WIDTH}
           y2={y}
-          stroke={y === OFFSET_Y ? "#282728" : "rgba(200,200,200,0.3)"}
+          stroke={y === OFFSET_Y ? "var(--foreground)" : "rgba(200,200,200,0.3)"}
         />
       );
     }
@@ -204,7 +204,7 @@ const BezierCurveEditor: FunctionComponent<BezierCurveEditorProps> = ({
               ${controlPoints[1].x + OFFSET_X} ${controlPoints[1].y + OFFSET_Y},
               ${end.x + OFFSET_X} ${end.y + OFFSET_Y}
           `}
-          stroke="rgba(242, 68, 44, 1)"
+          stroke="var(--accent)"
           strokeWidth="2"
           fill="none"
         />
@@ -216,7 +216,7 @@ const BezierCurveEditor: FunctionComponent<BezierCurveEditorProps> = ({
             cx={p.x + OFFSET_X}
             cy={p.y + OFFSET_Y}
             r={6}
-            fill={i < 2 ? "rgba(242, 68, 44,1)" : "#555"}
+            fill={i < 2 ? "var(--accent)" : "var(--mutted)"}
             onMouseDown={handlePointerDown(i)}
             onTouchStart={handlePointerDown(i)}
             cursor="pointer"
@@ -232,7 +232,7 @@ const BezierCurveEditor: FunctionComponent<BezierCurveEditorProps> = ({
           y={HEIGHT - (p.y + OFFSET_Y) - 10}
           fontFamily={font}
           fontSize="12"
-          fill="#000"
+          fill="var(--foreground)"
         >
           ({formatX(p.x)}, {p.y})
         </text>
@@ -244,7 +244,7 @@ const BezierCurveEditor: FunctionComponent<BezierCurveEditorProps> = ({
         y={HEIGHT - 5}
         fontFamily={font}
         fontSize="14"
-        fill="#444"
+        fill="var(--foreground)"
         textAnchor="middle"
       >
         {xLabel}
@@ -253,7 +253,7 @@ const BezierCurveEditor: FunctionComponent<BezierCurveEditorProps> = ({
         transform={`translate(15, ${HEIGHT / 2}) rotate(-90)`}
         fontFamily={font}
         fontSize="14"
-        fill="#444"
+        fill="var(--foreground)"
         textAnchor="middle"
       >
         {yLabel}
