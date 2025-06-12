@@ -1,7 +1,7 @@
 ---
 author: Steven Archer
-pubDatetime: 2025-06-11T16:15:43.00Z
-modDatetime: 2025-06-11T16:15:43.00Z
+pubDatetime: 2025-06-11T16:15:43.669Z
+modDatetime: 2025-06-12T08:26:40.669Z
 title: Cubic Bézier Curve Editor
 slug: cubic-bezier-curve-editor
 featured: true
@@ -15,6 +15,7 @@ description: Interactive bézier curve editor for modeling vehicle movement
 ---
 
 import BezierCurveEditor from 'src/components/blog/BezierCurveEditor.tsx';
+import CubicBezierFormula from 'src/assets/images/CubicBezierFormula.svg'
 
 Cubic Bézier curves are powerful tools for mathematically defining non-linear motion between two points. In this post, we’ll explore how to create, edit, and use cubic Bézier curves in a game loop. Our goal is to model a simplified arcade-style vehicle behavior that’s efficient to compute in real-time.
 
@@ -28,11 +29,7 @@ A cubic bézier curve is defined by four points:
 - `P₂`: Second control point
 - `P₃`: End point
 
-<img
-  alt="Cubic Bézier formula"
-  className="border-0 pb-8"
-  src="https://latex.codecogs.com/svg.image?B(t)%20=%20(1-t)^3P_0%20+%203(1-t)^2tP_1%20+%203(1-t)t^2P_2%20+%20t^3P_3"
-/>
+<CubicBezierFormula className="text-accent my-8 w-full"/>
 
 # Editor
 
