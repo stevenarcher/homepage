@@ -80,21 +80,34 @@ const BezierCurveEditor: FunctionComponent<BezierCurveEditorProps> = ({
 
   const snap = (val: number) => Math.round(val / GRID_SIZE) * GRID_SIZE;
 
-  const handleMouseDown = (index: number) => (e: React.MouseEvent) => {
+  const handlePointerDown = (index: number) => (
+    e: React.MouseEvent | React.TouchEvent
+  ) => {
     e.preventDefault();
     setDraggingIndex(index);
   };
 
-  const handleMouseMove = (e: MouseEvent) => {
+  const handleMove = (e: MouseEvent | TouchEvent) => {
     if (draggingIndex === null || !svgRef.current) return;
 
-    const pt = svgRef.current.createSVGPoint();
-    pt.x = e.clientX;
-    pt.y = e.clientY;
-    const svgP = pt.matrixTransform(svgRef.current.getScreenCTM()?.inverse());
+    const point = svgRef.current.createSVGPoint();
 
-    const x = snap(svgP.x - OFFSET_X);
-    const y = snap(HEIGHT - svgP.y - OFFSET_Y); // flip y back to logical space
+    if ("touches" in e && e.touches.length > 0) {
+      point.x = e.touches[0].clientX;
+      point.y = e.touches[0].clientY;
+    } else if ("clientX" in e) {
+      point.x = e.clientX;
+      point.y = e.clientY;
+    } else {
+      return;
+    }
+
+    const svgPoint = point.matrixTransform(
+      svgRef.current.getScreenCTM()?.inverse()
+    );
+
+    const x = snap(svgPoint.x - OFFSET_X);
+    const y = snap(HEIGHT - svgPoint.y - OFFSET_Y); // account for flipped Y
 
     updateState(prev => {
       const points = [prev.start, prev.end, ...prev.controlPoints];
@@ -107,16 +120,22 @@ const BezierCurveEditor: FunctionComponent<BezierCurveEditorProps> = ({
     });
   };
 
-  const handleMouseUp = () => {
+  const handleUp = () => {
     setDraggingIndex(null);
   };
 
   useEffect(() => {
-    window.addEventListener("mousemove", handleMouseMove);
-    window.addEventListener("mouseup", handleMouseUp);
+    window.addEventListener("mousemove", handleMove);
+    window.addEventListener("mouseup", handleUp);
+    window.addEventListener("touchmove", handleMove, { passive: false });
+    window.addEventListener("touchend", handleUp);
+    window.addEventListener("touchcancel", handleUp);
     return () => {
-      window.removeEventListener("mousemove", handleMouseMove);
-      window.removeEventListener("mouseup", handleMouseUp);
+      window.removeEventListener("mousemove", handleMove);
+      window.removeEventListener("mouseup", handleUp);
+      window.removeEventListener("touchmove", handleMove);
+      window.removeEventListener("touchend", handleUp);
+      window.removeEventListener("touchcancel", handleUp);
     };
   }, [draggingIndex]);
 
@@ -198,7 +217,8 @@ const BezierCurveEditor: FunctionComponent<BezierCurveEditorProps> = ({
             cy={p.y + OFFSET_Y}
             r={6}
             fill={i < 2 ? "rgba(242, 68, 44,1)" : "#555"}
-            onMouseDown={handleMouseDown(i)}
+            onMouseDown={handlePointerDown(i)}
+            onTouchStart={handlePointerDown(i)}
             cursor="pointer"
           />
         ))}
