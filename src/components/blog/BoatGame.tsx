@@ -1,5 +1,4 @@
-// BoatGame.tsx
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useStore } from '@nanostores/react';
 import { bezierCurves } from '@/stores/bezierStore.ts';
 import {
@@ -8,9 +7,10 @@ import {
 } from '@/components/blog/bezierFunctions.ts';
 
 const MAX_SPEED = 0.2;
-const MAX_TURN = 0.001;
 
 const BoatGame: React.FC = () => {
+  const [maxAcceleration, setMaxAcceleration] = useState(0.16);
+  const [maxTurn, setMaxTurn] = useState(0.0011);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const curves = useStore(bezierCurves);
 
@@ -18,28 +18,32 @@ const BoatGame: React.FC = () => {
     const accelerationCurve = curves['acceleration'];
     const accelerationLUT = accelerationCurve
       ? generateBezierLookupTable(
-          accelerationCurve.start,
-          accelerationCurve.controlPoints[0],
-          accelerationCurve.controlPoints[1],
-          accelerationCurve.end
-        )
+        accelerationCurve.start,
+        accelerationCurve.controlPoints[0],
+        accelerationCurve.controlPoints[1],
+        accelerationCurve.end
+      )
       : [];
     const turningCurve = curves['turning'];
     const turningLUT = turningCurve
       ? generateBezierLookupTable(
-          turningCurve.start,
-          turningCurve.controlPoints[0],
-          turningCurve.controlPoints[1],
-          turningCurve.end
-        )
+        turningCurve.start,
+        turningCurve.controlPoints[0],
+        turningCurve.controlPoints[1],
+        turningCurve.end
+      )
       : [];
 
     const canvas = canvasRef.current;
     if (!canvas) return;
 
-    canvas.width = 736;
-    canvas.height = 500;
     const ctx = canvas.getContext('2d')!;
+    const resizeCanvas = () => {
+      canvas.width = Math.min(window.innerWidth - 32, 736); // 32px padding
+      canvas.height = 500;
+    };
+    resizeCanvas();
+    window.addEventListener('resize', resizeCanvas);
 
     interface Boat {
       x: number;
@@ -54,7 +58,7 @@ const BoatGame: React.FC = () => {
       angle: 0,
       speed: 0,
     };
-    const lastState = boat;
+    const lastState = { ...boat };
 
     const keys = {
       w: false,
@@ -79,12 +83,12 @@ const BoatGame: React.FC = () => {
       lastState.angle = boat.angle;
 
       if (keys.w)
-        boat.speed += cubicBezierYWithLUT(boat.speed, accelerationLUT) * 0.2;
+        boat.speed += cubicBezierYWithLUT(boat.speed, accelerationLUT) * maxAcceleration;
       if (keys.s) boat.speed -= 0.1;
       if (keys.a)
-        boat.angle -= cubicBezierYWithLUT(boat.speed, turningLUT) * MAX_TURN * (keys.w ? 1 : 1.4);
+        boat.angle -= cubicBezierYWithLUT(boat.speed, turningLUT) * maxTurn * (keys.w ? 1 : 1.4);
       if (keys.d)
-        boat.angle += cubicBezierYWithLUT(boat.speed, turningLUT) * MAX_TURN;
+        boat.angle += cubicBezierYWithLUT(boat.speed, turningLUT) * maxTurn * (keys.w ? 1 : 1.4);
 
       if (!(keys.w || keys.s)) boat.speed *= 0.98;
 
@@ -95,7 +99,6 @@ const BoatGame: React.FC = () => {
       boat.x += Math.cos(boat.angle) * boat.speed * MAX_SPEED;
       boat.y += Math.sin(boat.angle) * boat.speed * MAX_SPEED;
 
-      // Bounce on canvas edges
       if (boat.x < 0 || boat.x > canvas.width) {
         boat.angle = Math.PI - boat.angle;
         boat.x = Math.max(0, Math.min(canvas.width, boat.x));
@@ -118,12 +121,10 @@ const BoatGame: React.FC = () => {
       ctx.lineTo(-20, 18);
       ctx.lineTo(-20, -18);
       ctx.lineTo(10, -20);
-
       ctx.closePath();
 
       ctx.fillStyle = '#F2442C';
       ctx.fill();
-
       ctx.restore();
     };
 
@@ -133,7 +134,7 @@ const BoatGame: React.FC = () => {
       ctx.textAlign = 'right';
       ctx.fillText(`Speed: ${boat.speed.toFixed(2)}`, canvas.width - 10, 20);
       ctx.fillText(
-        `Rate of Acceleration: ${(cubicBezierYWithLUT(boat.speed, accelerationLUT)).toFixed(1)}%`,
+        `Rate of Acceleration: ${cubicBezierYWithLUT(boat.speed, accelerationLUT).toFixed(1)}%`,
         canvas.width - 10,
         40
       );
@@ -162,10 +163,47 @@ const BoatGame: React.FC = () => {
     return () => {
       window.removeEventListener('keydown', handleKeyDown);
       window.removeEventListener('keyup', handleKeyUp);
+      window.removeEventListener('resize', resizeCanvas);
     };
-  }, [curves]);
+  }, [curves, maxAcceleration, maxTurn]);
 
-  return <canvas ref={canvasRef} style={{ border: '1px solid black' }} />;
+  return (
+    <div className="flex flex-col items-center gap-4 p-4">
+      <div className="w-full max-w-3xl">
+        <canvas ref={canvasRef} className="border border-black w-full h-[500px]" />
+      </div>
+
+      <div className="w-full max-w-3xl space-y-4">
+        <div className="flex flex-col">
+          <label htmlFor="acceleration" className="mb-1 text-sm font-medium">Max Acceleration: {maxAcceleration.toFixed(2)}</label>
+          <input
+            id="acceleration"
+            type="range"
+            min={0.05}
+            max={4}
+            step={0.01}
+            value={maxAcceleration}
+            onChange={(e) => setMaxAcceleration(parseFloat(e.target.value))}
+            className="w-full"
+          />
+        </div>
+
+        <div className="flex flex-col">
+          <label htmlFor="turn" className="mb-1 text-sm font-medium">Max Turn Rate: {maxTurn.toFixed(4)}</label>
+          <input
+            id="turn"
+            type="range"
+            min={0.0001}
+            max={0.01}
+            step={0.0001}
+            value={maxTurn}
+            onChange={(e) => setMaxTurn(parseFloat(e.target.value))}
+            className="w-full"
+          />
+        </div>
+      </div>
+    </div>
+  );
 };
 
 export default BoatGame;
