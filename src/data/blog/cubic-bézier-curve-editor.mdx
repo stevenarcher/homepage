@@ -14,13 +14,15 @@ tags:
 description: Interactive bézier curve editor for modeling vehicle movement
 ---
 
+import BoatGame from 'src/components/blog/BoatGame.tsx';
 import BezierCurveEditor from 'src/components/blog/BezierCurveEditor.tsx';
-import CubicBezierFormula from 'src/assets/images/CubicBezierFormula.svg'
+import CubicBezierFormula from 'src/assets/images/CubicBezierFormula.svg';
 
-Cubic Bézier curves are powerful tools for mathematically defining non-linear motion between two points. In this post, we’ll explore how to create, edit, and use cubic Bézier curves in a game loop. Our goal is to model a simplified arcade-style vehicle behavior that’s efficient to compute in real-time.
+Cubic Bézier curves defining a non-linear path between two points. In this post, we’ll explore how to create, edit, and use cubic Bézier curves in a game loop. Our goal is to model a simplified arcade-style vehicle physics that’s efficient to compute in real-time and easily editable.
 
+---
 
-## What Is a Cubic Bézier Curve?
+# The Maths
 
 A cubic bézier curve is defined by four points:
 
@@ -29,55 +31,68 @@ A cubic bézier curve is defined by four points:
 - `P₂`: Second control point
 - `P₃`: End point
 
-<CubicBezierFormula className="text-accent my-8 w-full"/>
+Then a position along the line can be calculated by:
 
-# Editor
+<CubicBezierFormula className="text-accent my-8 w-full" />
+
+---
+
+# The Editor
 
 To begin, I built a simple GUI for creating and editing cubic Bézier curves. These curves can model behavior such as acceleration or turning effectiveness based on velocity.
 
-### Acceleration
+## Acceleration
 
-In this example, the vehicle's acceleration rate peaks early—just after it starts moving—and then gradually decreases as it nears top speed. This simplified model avoids complex calculations suited to an arcade game rather than a simulation.
+In this example, the vehicle's acceleration rate peaks early, just after it starts moving, it then gradually decreases as it nears top speed. This simplified model avoids complex calculations suited to an arcade game rather than a simulation.
 
 <BezierCurveEditor
   id="acceleration"
-  xPercentage={500}
   xLabel="Velocity"
   yLabel="Rate of Acceleration"
   initialState={{
-    start: { x: 0, y: 250 },
-    end: { x: 500, y: 0 },
+    start: { x: 0, y: 55 },
+    end: { x: 100, y: 0 },
     controlPoints: [
-      { x: 150, y: 450 },
-      { x: 290, y: 0 },
+      { x: 33, y: 100 },
+      { x: 62, y: 0 },
     ],
   }}
   client:load
 />
 
-### Turning effectiveness
+## Turning effectiveness
 
 At high speeds, the turning radius should be large (less responsive), while at slower speeds it should be tighter. To simulate realistic behavior, turning effectiveness should be zero when there’s no forward momentum.
 
 <BezierCurveEditor
   id="turning"
-  xPercentage={500}
   xLabel="Velocity"
   yLabel="Rate of Turning"
   initialState={{
     start: { x: 0, y: 0 },
-    end: { x: 500, y: 70 },
+    end: { x: 100, y: 24 },
     controlPoints: [
-      { x: 0, y: 450 },
-      { x: 150, y: 100 },
+      { x: 10, y: 0 },
+      { x: 6, y: 100 },
     ],
   }}
   client:load
 />
 
-## Optimise for a game loop
+---
 
-Rather than evaluating Bézier equations every frame, we can optimize performance by precomputing curve values into a lookup table. This allows for fast interpolation with minimal CPU cost during runtime.
+# The Optimisation
 
+For a game loop rather than evaluating cubic bézier equations every frame, we can optimize performance by precomputing curve values into a lookup table (LUT). This allows for fast interpolation with minimal CPU cost during runtime.
 
+## Test Results
 
+The LUT was on average x70 faster per loop. The downsides are an initial hit when creating the LUT and the values being returned between values in the look up table being potentially slight inaccurate.
+
+---
+
+# The Demo
+
+Using the editors above you can manipulate the physics model of this vehicle, then using the `W`, `A`, `S` and `D` keys to interact with it to see how it performs
+
+<BoatGame client:load />
