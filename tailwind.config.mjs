@@ -1,8 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-  content: [
-    "./src/**/*.{astro,html,js,jsx,ts,tsx}",
-  ],
+  content: ['./src/**/*.{astro,html,js,jsx,ts,tsx}'],
   theme: {
     fontFamily: {
       sans: ['Josefin Sans', 'sans-serif'],
@@ -11,4 +9,4 @@ export default {
     },
   },
   plugins: [],
-}
+};

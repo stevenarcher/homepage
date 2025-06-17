@@ -12,11 +12,16 @@ import {
   type BezierState,
 } from "@/stores/bezierStore";
 
+const GRID_SIZE = 10;
+const GRID_SCALE = 4.5;
+
 const GRID_OFFSET_X = 3;
 const GRID_OFFSET_Y = 3;
-const GRID_SIZE = 10;
-const OFFSET_Y = GRID_SIZE * GRID_OFFSET_Y;
 const OFFSET_X = GRID_SIZE * GRID_OFFSET_X;
+const OFFSET_Y = GRID_SIZE * GRID_OFFSET_Y;
+
+const xFormat = (x: number) => (x * GRID_SCALE) + OFFSET_X;
+const yFormat = (y: number) => (y * GRID_SCALE) + OFFSET_Y;
 
 const WIDTH = 736;
 const HEIGHT = 500;
@@ -24,10 +29,10 @@ const font = '"JetBrains Mono", monospace';
 
 const defaultCanvasState: BezierState = {
   start: { x: 0, y: 0 },
-  end: { x: 450, y: 50 },
+  end: { x: 20, y: 50 },
   controlPoints: [
-    { x: 150, y: 450 },
-    { x: 350, y: 50 },
+    { x: 33, y: 20 },
+    { x: 77, y: 50 },
   ],
 };
 
@@ -45,24 +50,19 @@ const BezierCurveEditor: FunctionComponent<BezierCurveEditorProps> = ({
                                                                         yLabel = "Y",
                                                                         initialState = defaultCanvasState,
                                                                         xPercentage,
+                                                                        ...rest
                                                                       }) => {
   const curves = useStore(bezierCurves);
   const [draggingIndex, setDraggingIndex] = useState<number | null>(null);
   const svgRef = useRef<SVGSVGElement>(null);
 
-  useEffect(() => {
-    registerCurve(id, initialState);
-  }, [id]);
-
-  const state = curves[id];
-  if (!state) return null;
-
+  const state = curves[id] || initialState;
   const { start, end, controlPoints } = state;
 
   const formatX = (x: number) =>
     xPercentage ? `${Math.round((x * 100) / xPercentage)}%` : x;
 
-  const snap = (val: number) => Math.round(val / GRID_SIZE) * GRID_SIZE;
+  const snap = (val: number) => Math.round(val);
 
   const handlePointerDown = (index: number) => (
     e: React.MouseEvent | React.TouchEvent
@@ -88,8 +88,8 @@ const BezierCurveEditor: FunctionComponent<BezierCurveEditorProps> = ({
       svgRef.current.getScreenCTM()?.inverse()
     );
 
-    const x = snap(svgPoint.x - OFFSET_X);
-    const y = snap(HEIGHT - svgPoint.y - OFFSET_Y); // flipped Y
+    const x = snap((svgPoint.x - OFFSET_X) / GRID_SCALE);
+    const y = snap((HEIGHT - svgPoint.y - OFFSET_Y) / GRID_SCALE); // flipped Y
 
     setCurveState(id, (prev) => {
       const points = [prev.start, prev.end, ...prev.controlPoints];
@@ -105,6 +105,10 @@ const BezierCurveEditor: FunctionComponent<BezierCurveEditorProps> = ({
   const handleUp = () => {
     setDraggingIndex(null);
   };
+
+  useEffect(() => {
+    registerCurve(id, initialState);
+  }, [id]);
 
   useEffect(() => {
     window.addEventListener("mousemove", handleMove);
@@ -156,7 +160,7 @@ const BezierCurveEditor: FunctionComponent<BezierCurveEditorProps> = ({
       width={WIDTH}
       height={HEIGHT}
       viewBox={`0 0 ${WIDTH} ${HEIGHT}`}
-      className="bezier-canvas w-full max-w-full h-auto"
+      className="bezier-canvas w-full max-w-full h-auto mb-4"
       style={{ border: "1px solid #ccc", touchAction: "none", aspectRatio: "736 / 500" }}
     >
       <g transform={`scale(1, -1) translate(0, -${HEIGHT})`}>
@@ -164,10 +168,10 @@ const BezierCurveEditor: FunctionComponent<BezierCurveEditorProps> = ({
 
         <polyline
           points={[
-            [start.x + OFFSET_X, start.y + OFFSET_Y],
-            [controlPoints[0].x + OFFSET_X, controlPoints[0].y + OFFSET_Y],
-            [controlPoints[1].x + OFFSET_X, controlPoints[1].y + OFFSET_Y],
-            [end.x + OFFSET_X, end.y + OFFSET_Y],
+            [xFormat(start.x), yFormat(start.y)],
+            [xFormat(controlPoints[0].x), yFormat(controlPoints[0].y)],
+            [xFormat(controlPoints[1].x), yFormat(controlPoints[1].y)],
+            [xFormat(end.x), yFormat(end.y)],
           ]
             .map(p => p.join(","))
             .join(" ")}
@@ -177,10 +181,10 @@ const BezierCurveEditor: FunctionComponent<BezierCurveEditorProps> = ({
 
         <path
           d={`
-            M ${start.x + OFFSET_X} ${start.y + OFFSET_Y}
-            C ${controlPoints[0].x + OFFSET_X} ${controlPoints[0].y + OFFSET_Y},
-              ${controlPoints[1].x + OFFSET_X} ${controlPoints[1].y + OFFSET_Y},
-              ${end.x + OFFSET_X} ${end.y + OFFSET_Y}
+            M ${xFormat(start.x)} ${yFormat(start.y)}
+            C ${xFormat(controlPoints[0].x)} ${yFormat(controlPoints[0].y)},
+              ${xFormat(controlPoints[1].x)} ${yFormat(controlPoints[1].y)},
+              ${xFormat(end.x)} ${yFormat(end.y)}
           `}
           stroke="var(--accent)"
           strokeWidth="2"
@@ -190,8 +194,8 @@ const BezierCurveEditor: FunctionComponent<BezierCurveEditorProps> = ({
         {[start, end, ...controlPoints].map((p, i) => (
           <circle
             key={i}
-            cx={p.x + OFFSET_X}
-            cy={p.y + OFFSET_Y}
+            cx={xFormat(p.x)}
+            cy={yFormat(p.y)}
             r={6}
             fill={i < 2 ? "var(--accent)" : "var(--mutted)"}
             onMouseDown={handlePointerDown(i)}
@@ -204,13 +208,13 @@ const BezierCurveEditor: FunctionComponent<BezierCurveEditorProps> = ({
       {[start, end, ...controlPoints].map((p, i) => (
         <text
           key={`label-${i}`}
-          x={p.x + OFFSET_X + 10}
-          y={HEIGHT - (p.y + OFFSET_Y) - 10}
+          x={xFormat(p.x) + 10}
+          y={HEIGHT - yFormat(p.y) - 10}
           fontFamily={font}
           fontSize="12"
           fill="var(--foreground)"
         >
-          ({formatX(p.x)}, {p.y})
+          ({formatX(p.x)}%, {p.y}%)
         </text>
       ))}
 

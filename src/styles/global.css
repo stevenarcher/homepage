@@ -1,13 +1,11 @@
-@import "tailwindcss";
-@import "./typography.css";
+@import 'tailwindcss';
+@import './typography.css';
 @config "../../tailwind.config.mjs";
-
-
 
 @custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
 
 :root,
-html[data-theme="light"] {
+html[data-theme='light'] {
   --background: rgb(217, 217, 217);
   --foreground: #282728;
   --accent: rgb(242, 68, 44);
@@ -15,11 +13,11 @@ html[data-theme="light"] {
   --border: #afa89b;
 }
 
-html[data-theme="dark"] {
+html[data-theme='dark'] {
   --background: #333446;
   --foreground: rgb(229, 231, 235);
-  --accent: #6FE6FC;
-  --muted: #7F8CAA;
+  --accent: #6fe6fc;
+  --muted: #7f8caa;
   --border: #879496;
 }
 
@@ -48,14 +46,19 @@ html[data-theme="dark"] {
     @apply outline-offset-1 outline-accent focus-visible:no-underline focus-visible:outline-2 focus-visible:outline-dashed;
   }
   button:not(:disabled),
-  [role="button"]:not(:disabled) {
+  [role='button']:not(:disabled) {
     cursor: pointer;
   }
   section,
   footer {
     @apply mx-auto max-w-app px-4;
   }
-  h1, h2, h3, h4, h5, h6 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     @apply font-sans font-normal;
   }
 }

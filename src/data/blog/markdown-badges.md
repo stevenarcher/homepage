@@ -9,8 +9,7 @@ draft: false
 tags:
   - markdown
   - util
-description:
-  A simple GUI for generating custom Shields.io badges for use in Markdown files and pull requests
+description: A simple GUI for generating custom Shields.io badges for use in Markdown files and pull requests
 ---
 
 Badges are a great way to add dynamic and visual indicators to your Markdown files—for things like build status, browser compatibility, license info, or custom messages.

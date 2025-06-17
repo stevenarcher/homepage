@@ -82,7 +82,7 @@ const BoatGame: React.FC = () => {
         boat.speed += cubicBezierYWithLUT(boat.speed, accelerationLUT) * 0.2;
       if (keys.s) boat.speed -= 0.1;
       if (keys.a)
-        boat.angle -= cubicBezierYWithLUT(boat.speed, turningLUT) * MAX_TURN;
+        boat.angle -= cubicBezierYWithLUT(boat.speed, turningLUT) * MAX_TURN * (keys.w ? 1 : 1.4);
       if (keys.d)
         boat.angle += cubicBezierYWithLUT(boat.speed, turningLUT) * MAX_TURN;
 
